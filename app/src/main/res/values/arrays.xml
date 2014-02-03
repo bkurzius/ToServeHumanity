@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="title_array">
+     <item>@string/title_introduction</item>
+     <item>@string/title_contributing</item>
+        <item>@string/title_twofold</item>
+        <item>@string/title_early</item>
+        <item>@string/title_selfless</item>
+    <item>@string/title_friendship</item>
+    <item>@string/title_coherence</item>
+    <item>@string/title_youth</item>
+    <item>@string/title_qualities</item>
+    <item>@string/title_building</item>
+    <item>@string/title_responding</item>
+    </string-array>
+
+    <string-array name="video_id_array">
+        <item>@string/video_id_introduction</item>
+        <item>@string/video_id_contributing</item>
+        <item>@string/video_id_twofold</item>
+        <item>@string/video_id_early</item>
+        <item>@string/video_id_selfless</item>
+        <item>@string/video_id_friendship</item>
+        <item>@string/video_id_coherence</item>
+        <item>@string/video_id_youth</item>
+        <item>@string/video_id_qualities</item>
+        <item>@string/video_id_building</item>
+        <item>@string/video_id_responding</item>
+    </string-array>
+
+    <string-array name="icon_array">
+        <item>@drawable/thumb_contributing_en</item>
+        <item>@drawable/thumb_twofold_en</item>
+        <item>@drawable/thumb_early_en</item>
+        <item>@drawable/thumb_selfless_en</item>
+        <item>@drawable/thumb_friendship_en</item>
+        <item>@drawable/thumb_coherence_en</item>
+        <item>@drawable/thumb_youth_en</item>
+        <item>@drawable/thumb_qualities_en</item>
+        <item>@drawable/thumb_building_en</item>
+        <item>@drawable/thumb_responding_en</item>
+    </string-array>
+
+
+</resources>
