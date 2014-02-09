@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="title_array">
+    <string-array name="video_title_array">
      <item>@string/title_introduction</item>
      <item>@string/title_contributing</item>
         <item>@string/title_twofold</item>
@@ -13,6 +13,20 @@
     <item>@string/title_qualities</item>
     <item>@string/title_building</item>
     <item>@string/title_responding</item>
+    </string-array>
+
+    <string-array name="video_file_name_array">
+        <item>@string/file_name_introduction</item>
+        <item>@string/file_name_contributing</item>
+        <item>@string/file_name_twofold</item>
+        <item>@string/file_name_early</item>
+        <item>@string/file_name_selfless</item>
+        <item>@string/file_name_friendship</item>
+        <item>@string/file_name_coherence</item>
+        <item>@string/file_name_youth</item>
+        <item>@string/file_name_qualities</item>
+        <item>@string/file_name_building</item>
+        <item>@string/file_name_responding</item>
     </string-array>
 
     <string-array name="video_id_array">
@@ -30,16 +44,17 @@
     </string-array>
 
     <string-array name="icon_array">
-        <item>@drawable/thumb_contributing_en</item>
-        <item>@drawable/thumb_twofold_en</item>
-        <item>@drawable/thumb_early_en</item>
-        <item>@drawable/thumb_selfless_en</item>
-        <item>@drawable/thumb_friendship_en</item>
-        <item>@drawable/thumb_coherence_en</item>
-        <item>@drawable/thumb_youth_en</item>
-        <item>@drawable/thumb_qualities_en</item>
-        <item>@drawable/thumb_building_en</item>
-        <item>@drawable/thumb_responding_en</item>
+
+        <item>@drawable/thumb2</item>
+        <item>@drawable/thumb3</item>
+        <item>@drawable/thumb4</item>
+        <item>@drawable/thumb5</item>
+        <item>@drawable/thumb6</item>
+        <item>@drawable/thumb7</item>
+        <item>@drawable/thumb8</item>
+        <item>@drawable/thumb9</item>
+        <item>@drawable/thumb10</item>
+        <item>@drawable/thumb11</item>
     </string-array>
 
 

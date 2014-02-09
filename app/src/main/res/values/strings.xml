@@ -4,7 +4,10 @@
     <string name="app_name">To Serve Humanity</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-
+    <string name="action_download_and_share">Download and Share videos</string>
+    <string name="title_already_downloaded">Video is already downloaded.</string>
+    <string name="title_downloading_video">Downloading video, please wait</string>
+    <string name="title_downloading_succeeded">Download succeeded</string>
     <string name="title_introduction">Introduction</string>
     <string name="title_contributing">Contributing to the Betterment of Society</string>
     <string name="title_twofold">Twofold Moral Purpose</string>
@@ -16,7 +19,17 @@
     <string name="title_qualities">Qualities for Collective Action</string>
     <string name="title_building">Building a New Civilization</string>
     <string name="title_responding">Responding to the Call</string>
-
+    <string name="file_name_introduction">introduction</string>
+    <string name="file_name_contributing">contributing_to_the_betterment_of_society</string>
+    <string name="file_name_twofold">twofold_moral_purpose</string>
+    <string name="file_name_early">early_adolescence</string>
+    <string name="file_name_selfless">selfless_service</string>
+    <string name="file_name_friendship">friendship_and_mutual_support</string>
+    <string name="file_name_coherence">coherence</string>
+    <string name="file_name_youth">youth_and_community_building</string>
+    <string name="file_name_qualities">qualities_for_collective_action</string>
+    <string name="file_name_building">building_a_new_civilization</string>
+    <string name="file_name_responding">responding_to_the_call</string>
     <string name="video_id_introduction">85625600</string>
     <string name="video_id_contributing">85618298</string>
     <string name="video_id_twofold">85626038</string>
@@ -28,7 +41,6 @@
     <string name="video_id_qualities">85619227</string>
     <string name="video_id_building">85619428</string>
     <string name="video_id_responding">85630367</string>
-
     <string name="video_url_introduction"></string>
     <string name="video_url_contributing"></string>
     <string name="video_url_twofold"></string>
@@ -40,47 +52,50 @@
     <string name="video_url_qualities"></string>
     <string name="video_url_building"></string>
     <string name="video_url_responding"></string>
-
     <string name="title_download_and_share">Download and share the films</string>
     <string name="title_terms">Before downloading please refer to the Terms of use</string>
-
     <string name="intro_paragraph_1">In February 2013, the Universal House of Justice announced a series of youth conferences to be held around the world. Thousands of young people from villages and neighbourhoods spanning every continent gathered to consult on the ways in which their generation can contribute to the spiritual and material well-being of their communities.</string>
     <string name="intro_paragraph_2">This series of short films captures the insights and conversation among participants as they explore some of the themes that are central to the process of community building.  The words of Abdu’l-Bahá, “God is the helper of those souls whose aim is to serve humanity and whose efforts and endeavours are devoted to the good and betterment of all mankind”, inspirethe hearts of many youth, who are collectively striving to translate their aspirations into reality.</string>
 
-    <!--#set var="titleDownloadAndShare_en" value="Download and share the films" -->
-    <!--#set var="titleTerms1_en" value="Before downloading please refer to the " -->
-    <!--#set var="titleTerms2_en" value="Terms of use" -->
-    <!--#set var="titleShare_en" value="Share" -->
-    <!--#set var="titleDownloadMP4High_en" value="Download MP4 High Quality" -->
-    <!--#set var="titleDownloadMP4Standard_en" value="Download MP4 Medium Quality" -->
-    <!--#set var="titleDownloadWMVStandard_en" value="Download WMV Medium Quality" -->
-    <!--#set var="titleDownloadClean_en" value="Download clean version (for subtitling)" -->
-
-    <!--#set var="introParagraph1_en" value="In February 2013, the Universal House of Justice announced a series of youth conferences to be held around the world. Thousands of young people from villages and neighbourhoods spanning every continent gathered to consult on the ways in which their generation can contribute to the spiritual and material well-being of their communities." -->
-    <!--#set var="introParagraph2_en" value="This series of short films captures the insights and conversation among participants as they explore some of the themes that are central to the process of community building.  The words of &#39;Abdu&#39;l&#45;Bah&#225;, &#34;God is the helper of those souls whose aim is to serve humanity and whose efforts and endeavours are devoted to the good and betterment of all mankind&#34;, inspirethe hearts of many youth, who are collectively striving to translate their aspirations into reality." -->
+    <!-- #set var="titleDownloadAndShare_en" value="Download and share the films" -->
+    <!-- #set var="titleTerms1_en" value="Before downloading please refer to the " -->
+    <!-- #set var="titleTerms2_en" value="Terms of use" -->
+    <!-- #set var="titleShare_en" value="Share" -->
+    <!-- #set var="titleDownloadMP4High_en" value="Download MP4 High Quality" -->
+    <!-- #set var="titleDownloadMP4Standard_en" value="Download MP4 Medium Quality" -->
+    <!-- #set var="titleDownloadWMVStandard_en" value="Download WMV Medium Quality" -->
+    <!-- #set var="titleDownloadClean_en" value="Download clean version (for subtitling)" -->
 
 
-    <!--#set var="introductionID_en" value="85625600" -->
-    <!--#set var="introductionTitle_en" value="Introduction" -->
-    <!--#set var="contributingID_en" value="85618298" -->
-    <!--#set var="contributingTitle_en" value="Contributing to the Betterment of Society" -->
-    <!--#set var="twofoldID_en" value="85626038" -->
-    <!--#set var="twofoldTitle_en" value="Twofold Moral Purpose" -->
-    <!--#set var="earlyID_en" value="85618570" -->
-    <!--#set var="earlyTitle_en" value="Early Adolescence" -->
-    <!--#set var="selflessID_en" value="85618912" -->
-    <!--#set var="selflessTitle_en" value="Selfless Service" -->
-    <!--#set var="friendshipID_en" value="85619318" -->
-    <!--#set var="friendshipTitle_en" value="Friendship and Mutual Support" -->
-    <!--#set var="coherenceID_en" value="85618565" -->
-    <!--#set var="coherenceTitle_en" value="Coherence" -->
-    <!--#set var="youthID_en" value="85618909" -->
-    <!--#set var="youthTitle_en" value="Youth and Community Building" -->
-    <!--#set var="qualitiesID_en" value="85619227" -->
-    <!--#set var="qualitiesTitle_en" value="Qualities for Collective Action" -->
-    <!--#set var="buildingID_en" value="85619428" -->
-    <!--#set var="buildingTitle_en" value="Building a New Civilization" -->
-    <!--#set var="respondingID_en" value="85630367" -->
-    <!--#set var="respondingTitle_en" value="Responding to the Call" -->
+    <!-- #set var="introParagraph1_en" value="In February 2013, the Universal House of Justice announced a series of youth conferences to be held around the world. Thousands of young people from villages and neighbourhoods spanning every continent gathered to consult on the ways in which their generation can contribute to the spiritual and material well-being of their communities." -->
+    <!-- #set var="introParagraph2_en" value="This series of short films captures the insights and conversation among participants as they explore some of the themes that are central to the process of community building.  The words of &#39;Abdu&#39;l&#45;Bah&#225;, &#34;God is the helper of those souls whose aim is to serve humanity and whose efforts and endeavours are devoted to the good and betterment of all mankind&#34;, inspirethe hearts of many youth, who are collectively striving to translate their aspirations into reality." -->
+
+
+    <!-- #set var="introductionID_en" value="85625600" -->
+    <!-- #set var="introductionTitle_en" value="Introduction" -->
+    <!-- #set var="contributingID_en" value="85618298" -->
+    <!-- #set var="contributingTitle_en" value="Contributing to the Betterment of Society" -->
+    <!-- #set var="twofoldID_en" value="85626038" -->
+    <!-- #set var="twofoldTitle_en" value="Twofold Moral Purpose" -->
+    <!-- #set var="earlyID_en" value="85618570" -->
+    <!-- #set var="earlyTitle_en" value="Early Adolescence" -->
+    <!-- #set var="selflessID_en" value="85618912" -->
+    <!-- #set var="selflessTitle_en" value="Selfless Service" -->
+    <!-- #set var="friendshipID_en" value="85619318" -->
+    <!-- #set var="friendshipTitle_en" value="Friendship and Mutual Support" -->
+    <!-- #set var="coherenceID_en" value="85618565" -->
+    <!-- #set var="coherenceTitle_en" value="Coherence" -->
+    <!-- #set var="youthID_en" value="85618909" -->
+    <!-- #set var="youthTitle_en" value="Youth and Community Building" -->
+    <!-- #set var="qualitiesID_en" value="85619227" -->
+    <!-- #set var="qualitiesTitle_en" value="Qualities for Collective Action" -->
+    <!-- #set var="buildingID_en" value="85619428" -->
+    <!-- #set var="buildingTitle_en" value="Building a New Civilization" -->
+    <!-- #set var="respondingID_en" value="85630367" -->
+    <!-- #set var="respondingTitle_en" value="Responding to the Call" -->
+
+    <string name="title_activity_video">VideoActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
