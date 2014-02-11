@@ -2,17 +2,17 @@
 <resources>
 
     <string-array name="video_title_array">
-     <item>@string/title_introduction</item>
-     <item>@string/title_contributing</item>
+        <item>@string/title_introduction</item>
+        <item>@string/title_contributing</item>
         <item>@string/title_twofold</item>
         <item>@string/title_early</item>
         <item>@string/title_selfless</item>
-    <item>@string/title_friendship</item>
-    <item>@string/title_coherence</item>
-    <item>@string/title_youth</item>
-    <item>@string/title_qualities</item>
-    <item>@string/title_building</item>
-    <item>@string/title_responding</item>
+        <item>@string/title_friendship</item>
+        <item>@string/title_coherence</item>
+        <item>@string/title_youth</item>
+        <item>@string/title_qualities</item>
+        <item>@string/title_building</item>
+        <item>@string/title_responding</item>
     </string-array>
 
     <string-array name="video_file_name_array">
@@ -43,8 +43,8 @@
         <item>@string/video_id_responding</item>
     </string-array>
 
-    <string-array name="icon_array">
-
+    <string-array name="video_icon_array">
+        <item>@drawable/thumb1</item>
         <item>@drawable/thumb2</item>
         <item>@drawable/thumb3</item>
         <item>@drawable/thumb4</item>

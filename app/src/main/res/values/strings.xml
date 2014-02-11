@@ -2,9 +2,12 @@
 <resources>
 
     <string name="app_name">To Serve Humanity</string>
-    <string name="hello_world">Hello world!</string>
+
     <string name="action_settings">Settings</string>
+    <string name="action_save">Save</string>
+    <string name="action_share">Share</string>
     <string name="action_download_and_share">Download and Share videos</string>
+
     <string name="title_already_downloaded">Video is already downloaded.</string>
     <string name="title_downloading_video">Downloading video, please wait</string>
     <string name="title_downloading_succeeded">Download succeeded</string>
@@ -19,6 +22,11 @@
     <string name="title_qualities">Qualities for Collective Action</string>
     <string name="title_building">Building a New Civilization</string>
     <string name="title_responding">Responding to the Call</string>
+
+    <string name="title_activity_video_detail">VideoDetailActivity</string>
+    <string name="title_activity_video">VideoActivity</string>
+
+
     <string name="file_name_introduction">introduction</string>
     <string name="file_name_contributing">contributing_to_the_betterment_of_society</string>
     <string name="file_name_twofold">twofold_moral_purpose</string>
@@ -30,6 +38,8 @@
     <string name="file_name_qualities">qualities_for_collective_action</string>
     <string name="file_name_building">building_a_new_civilization</string>
     <string name="file_name_responding">responding_to_the_call</string>
+
+
     <string name="video_id_introduction">85625600</string>
     <string name="video_id_contributing">85618298</string>
     <string name="video_id_twofold">85626038</string>
@@ -41,6 +51,8 @@
     <string name="video_id_qualities">85619227</string>
     <string name="video_id_building">85619428</string>
     <string name="video_id_responding">85630367</string>
+
+
     <string name="video_url_introduction"></string>
     <string name="video_url_contributing"></string>
     <string name="video_url_twofold"></string>
@@ -52,6 +64,11 @@
     <string name="video_url_qualities"></string>
     <string name="video_url_building"></string>
     <string name="video_url_responding"></string>
+
+    <string name="title_download">Download</string>
+    <string name="title_downloaded">Downloaded</string>
+    <string name="title_save_video">Save video</string>
+    <string name="title_save">Save</string>
     <string name="title_download_and_share">Download and share the films</string>
     <string name="title_terms">Before downloading please refer to the Terms of use</string>
     <string name="intro_paragraph_1">In February 2013, the Universal House of Justice announced a series of youth conferences to be held around the world. Thousands of young people from villages and neighbourhoods spanning every continent gathered to consult on the ways in which their generation can contribute to the spiritual and material well-being of their communities.</string>
@@ -94,8 +111,8 @@
     <!-- #set var="respondingID_en" value="85630367" -->
     <!-- #set var="respondingTitle_en" value="Responding to the Call" -->
 
-    <string name="title_activity_video">VideoActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
 
 </resources>

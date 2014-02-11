@@ -1,4 +1,4 @@
-package com.bahaiexplorer.toservehumanity;
+package com.bahaiexplorer.toservehumanity.activities;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
+import com.bahaiexplorer.toservehumanity.R;
+import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
 import com.bahaiexplorer.toservehumanity.util.SystemUiHider;
 
 import java.io.File;

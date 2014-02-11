@@ -1,4 +1,4 @@
-package com.bahaiexplorer.toservehumanity;
+package com.bahaiexplorer.toservehumanity.util;
 
 import android.content.Context;
 import android.content.res.Configuration;

@@ -2,20 +2,64 @@ package com.bahaiexplorer.toservehumanity;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Environment;
 import android.util.Log;
 
+import com.bahaiexplorer.toservehumanity.model.Constants;
+import com.bahaiexplorer.toservehumanity.model.VideoItem;
+
 import java.io.File;
+import java.util.ArrayList;
+
 
 /**
  * Created by briankurzius on 2/8/14.
  */
 public class ToServeHumanityApplication extends Application {
     final static String TAG = "ToServeHumanityApplication";
+    public ArrayList<VideoItem> mVideoList = new ArrayList<VideoItem>();
+    public TypedArray videoIconDrawables;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        buildVideoArray();
+    }
+
+    // build the videoArray so we don;t have to do it more than once
+    private void buildVideoArray(){
+        mVideoList = new ArrayList<VideoItem>();
+        videoIconDrawables = getResources().obtainTypedArray(R.array.video_icon_array);
+
+        String[] videoTitleArray = getResources().getStringArray(R.array.video_title_array);
+        String[] videoIDArray = getResources().getStringArray(R.array.video_id_array);
+        String[] videoFileNameArray = getResources().getStringArray(R.array.video_file_name_array);
+        String[] videoIconDrawableArray = getResources().getStringArray(R.array.video_icon_array);
+
+        for(int i =0; i<videoTitleArray.length;i++){
+            String videoTitle = videoTitleArray[i];
+            String videoID = videoIDArray[i];
+            String videoFileName = videoFileNameArray[i];
+            //String videoIconDrawable = videoIconDrawableArray[i];
+            VideoItem vi = new VideoItem();
+            vi.videoTitle = videoTitle;
+            vi.videoID = videoID;
+            vi.videoFileName = videoFileName;
+            vi.videoLanguage = VideoItem.VIDEO_LANGUAGE_ENGLISH;
+            vi.videoIconDrawable = (Drawable) videoIconDrawables.getDrawable(i);
+            vi.videoLength = "60min";
+            String filePath = vi.videoFileName + "_" +  vi.videoLanguage + "_" + Constants.VIDEO_SIZE  + Constants.VIDEO_SUFFIX;
+            boolean isFileSaved = isVideoFileSaved(getApplicationContext(),filePath);
+            vi.isSaved = isFileSaved;
+            mVideoList.add(vi);
+        }
+        videoIconDrawables.recycle();
+    }
+
+    public ArrayList<VideoItem> getVideoList(){
+        return mVideoList;
     }
 
     static public boolean isVideoFileSaved(final Context context, String fileName){

@@ -1,4 +1,4 @@
-package com.bahaiexplorer.toservehumanity;
+package com.bahaiexplorer.toservehumanity.activities;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -16,6 +16,10 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bahaiexplorer.toservehumanity.R;
+import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
+import com.bahaiexplorer.toservehumanity.model.Constants;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
@@ -59,7 +63,6 @@ public class DownloadAndShareActivity extends Activity {
         setContentView(R.layout.activity_main);
         mContext = this;
 
-        imgs = getResources().obtainTypedArray(R.array.icon_array);
         mIconGridView = (GridView)findViewById(R.id.gridViewIcons);
         Log.d("main", "imgs is:" + imgs);
         mIconGridView.setAdapter(new CustomGridAdapter(this, imgs));

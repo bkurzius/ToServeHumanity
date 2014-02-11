@@ -1,13 +1,10 @@
-package com.bahaiexplorer.toservehumanity;
+package com.bahaiexplorer.toservehumanity.activities;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -17,21 +14,27 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
-import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
+import com.bahaiexplorer.toservehumanity.R;
+import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
+import com.bahaiexplorer.toservehumanity.model.VideoItem;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends ActionBarActivity {
     private static final String TAG = "MainActivity";
 
-    private TypedArray imgs;
     private ToServeHumanityApplication mApp;
     private Context mContext;
 
     private GridView mIconGridView;
+    private ListView mIconListView;
 
     // Progress Dialog
     private ProgressDialog pDialog;
@@ -43,9 +46,6 @@ public class MainActivity extends ActionBarActivity {
     // 'http://downloadcdn1.bahai.org/toserve/' + file_name;
     //building_a_new_civilization_en_standard.mp4
     // http://downloadcdn1.bahai.org/toserve/building_a_new_civilization_en_standard.mp4
-
-
-
     //private static Integer[] icons_array =
 
     @Override
@@ -60,10 +60,12 @@ public class MainActivity extends ActionBarActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
-        imgs = getResources().obtainTypedArray(R.array.icon_array);
-        mIconGridView = (GridView)findViewById(R.id.gridViewIcons);
-        Log.d("main", "imgs is:" + imgs);
-        mIconGridView.setAdapter(new CustomGridAdapter(this, imgs));
+
+        mIconListView = (ListView)findViewById(R.id.lv_video_items);
+
+       ToServeHumanityApplication app = (ToServeHumanityApplication)getApplication();
+
+        mIconListView.setAdapter(new CustomListAdapter(this, R.layout.list_item_view, app.getVideoList()));
     }
 
 
@@ -88,38 +90,6 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void openVideo(int index){
-        String downloadFileName = getResources().getStringArray(R.array.video_file_name_array)[index];
-        Log.d(TAG,"downloadFileName: " + downloadFileName);
-        String mFileName = downloadFileName + "_" + Constants.LANGUAGE + "_" + Constants.VIDEO_SIZE  + Constants.VIDEO_SUFFIX;
-        // now check if the file has been saved already
-        if(mApp.isVideoFileSaved(mContext, mFileName)){
-            //its saved so get it and play it
-            //File videoFile = mApp.getSavedVideoFile(this,mFileName);
-            Intent intent = new Intent(this,VideoActivity.class);
-            intent.putExtra(VideoActivity.FILE_NAME,mFileName);
-            startActivity(intent);
-            /*FileInputStream fis;
-            try{
-                fis = new FileInputStream(videoFile);
-                MediaPlayer mp = new MediaPlayer();
-                mp.setDataSource(fis.getFD());
-                fis.close();
-                mp.prepare();
-                mp.start();
-            }catch (IOException e){
-                Toast.makeText(this,"unknown video error", Toast.LENGTH_SHORT).show();
-            }*/
-
-        }else{
-            //String vidID = getResources().getStringArray(R.array.video_id_array)[index];
-            Intent mVideoIntent = new Intent(this,WebVideoActivity.class);
-            mVideoIntent.putExtra(WebVideoActivity.VIDEO_INDEX, index);
-            this.startActivity(mVideoIntent);
-        }
-
-
-    }
 
     private boolean isCallable(Intent intent) {
         List<ResolveInfo> list = getPackageManager().queryIntentActivities(intent,
@@ -153,57 +123,55 @@ public class MainActivity extends ActionBarActivity {
 
     // Here is your custom Adapter
 
-    public class CustomGridAdapter extends BaseAdapter {
-        private Activity mContext;
-        private TypedArray mItems;
-
+    public class CustomListAdapter extends ArrayAdapter<VideoItem> {
+        ArrayList<VideoItem> viList;
+        int vView;
 
         // Constructor
-        public CustomGridAdapter(MainActivity mainActivity, TypedArray items) {
-            this.mContext = mainActivity;
-            mItems = items;
-
+        public CustomListAdapter(Context context, int layoutResourceId,
+                                 List<VideoItem> objects) {
+            super(context, layoutResourceId, objects);
+            viList = (ArrayList<VideoItem>)objects;
+            vView = layoutResourceId;
         }
 
-        @Override
-        public int getCount() {
-            return mItems.length();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return 0;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ImageView imageView = new ImageView(mContext);
-            ImageButton imageButton = new ImageButton(mContext);
-            Drawable drawable = mItems.getDrawable(position);
-            imageView.setImageDrawable(drawable);
+            LayoutInflater li = (LayoutInflater)getSystemService
+                    (Context.LAYOUT_INFLATER_SERVICE);
+            View v  = li.inflate(vView, parent, false);
+            VideoItem vi = viList.get(position);
+            ImageView imageView = (ImageView) v.findViewById(R.id.iv_icon);
+            TextView mTitle = (TextView)v.findViewById(R.id.tv_video_title);
+            TextView mLength = (TextView)v.findViewById(R.id.tv_video_length);
+
+            imageView.setImageDrawable(vi.videoIconDrawable);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            imageButton.setImageDrawable(drawable);
-            imageButton.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageButton.setLayoutParams(new GridView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            imageButton.setId(position);
-            imageButton.setOnClickListener(new View.OnClickListener() {
+            v.setId(position);
+
+            mTitle.setText(vi.videoTitle);
+            mLength.setText(vi.videoLength);
+
+            // check to see if the file is saved and hide the icon if not
+            ImageView savedIcon = (ImageView) v.findViewById(R.id.iv_saved);
+            if(!vi.isSaved) savedIcon.setVisibility(View.GONE);
+
+            v.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.d("button clicked","num:");
-                    openVideo(((ImageButton)v).getId());
+                    Intent i = new Intent(mContext, VideoDetailActivity.class);
+                    i.putExtra(VideoItem.VIDEO_INDEX,v.getId());
+                    startActivity(i);
                 }
             });
 
-            return imageButton;
+            return v;
         }
 
     }
+
 
 
 

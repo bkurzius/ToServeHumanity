@@ -1,4 +1,4 @@
-package com.bahaiexplorer.toservehumanity;
+package com.bahaiexplorer.toservehumanity.activities;
 
         import android.app.Activity;
         import android.content.Context;
@@ -15,6 +15,8 @@ package com.bahaiexplorer.toservehumanity;
         import android.webkit.WebView;
         import android.webkit.WebViewClient;
         import android.widget.FrameLayout;
+
+        import com.bahaiexplorer.toservehumanity.R;
 
 public class HTML5WebView extends WebView {
 

@@ -1,4 +1,4 @@
-package com.bahaiexplorer.toservehumanity;
+package com.bahaiexplorer.toservehumanity.model;
 
 /**
  * Created by briankurzius on 2/8/14.

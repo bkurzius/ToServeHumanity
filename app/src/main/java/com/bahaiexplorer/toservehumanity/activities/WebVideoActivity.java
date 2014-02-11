@@ -1,8 +1,11 @@
-package com.bahaiexplorer.toservehumanity;
+package com.bahaiexplorer.toservehumanity.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+
+import com.bahaiexplorer.toservehumanity.R;
+import com.bahaiexplorer.toservehumanity.activities.HTML5WebView;
 
 /**
  * Created by briankurzius on 2/8/14.

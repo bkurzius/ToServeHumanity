@@ -3,10 +3,10 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bahaiexplorer.toservehumanity.MainActivity"
+    tools:context="com.bahaiexplorer.toservehumanity.activities.MainActivity"
     tools:ignore="MergeRootFrame" >
 
-    <GridView
+    <!--<GridView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/gridViewIcons"
@@ -16,6 +16,12 @@
         android:layout_margin="20dp"
         android:numColumns="2"
         android:verticalSpacing="2dp"
-        android:horizontalSpacing="2dp"/>
+        android:horizontalSpacing="2dp"/>-->
+
+    <ListView
+        android:id="@+id/lv_video_items"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></ListView>
 
     </FrameLayout>
