@@ -62,10 +62,12 @@ public class MainActivity extends ActionBarActivity {
         }
 
         mIconListView = (ListView)findViewById(R.id.lv_video_items);
+    }
 
-       ToServeHumanityApplication app = (ToServeHumanityApplication)getApplication();
-
-        mIconListView.setAdapter(new CustomListAdapter(this, R.layout.list_item_view, app.getVideoList()));
+    @Override
+    public void onResume(){
+        super.onResume();
+        mIconListView.setAdapter(new CustomListAdapter(this, R.layout.list_item_view, mApp.getVideoList()));
     }
 
 

@@ -1,8 +1,10 @@
 package com.bahaiexplorer.toservehumanity.activities;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -66,7 +68,6 @@ public class VideoDetailActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.video_detail, menu);
         // these are change on the fly so we can reset them based on the state
@@ -76,11 +77,9 @@ public class VideoDetailActivity extends ActionBarActivity {
             saveDrawable = R.drawable.ic_action_saved;
             saveTxt = "Saved";
         }
-
         menu.add(0,MENU_ITEM_ID_SAVED,0,saveTxt)
                 .setIcon(saveDrawable)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);;
-
         return true;
     }
 
@@ -93,6 +92,8 @@ public class VideoDetailActivity extends ActionBarActivity {
         if (id == MENU_ITEM_ID_SAVED) {
             requestDownload();
             return true;
+        }else if (id == R.id.action_share){
+            createShare();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -210,17 +211,23 @@ public class VideoDetailActivity extends ActionBarActivity {
 
         }else{
             Log.d(TAG,"file is NOT saved - so stream it");
-            if(ConnectionUtils.isUsingCellularConnection(mContext)){
+            if(ConnectionUtils.isUsingCellularConnection(mContext) && mApp.remindOnCellularConnection()){
                 // show dialog to be sure that they want to stream
-                Toast.makeText(mContext,"Are you sure you want to use cell data for this? You can download it instead.", Toast.LENGTH_LONG).show();
+               // Toast.makeText(mContext,"Are you sure you want to use cell data for this? You can download it instead.", Toast.LENGTH_LONG).show();
+                showConnectionWarningDialog();
+            }else{
+                startStream();
             }
-            //String vidID = getResources().getStringArray(R.array.video_id_array)[index];
-            Intent mVideoIntent = new Intent(this,WebVideoActivity.class);
-            mVideoIntent.putExtra(WebVideoActivity.VIDEO_INDEX, index);
-            this.startActivity(mVideoIntent);
         }
 
 
+    }
+
+    private void startStream(){
+        //String vidID = getResources().getStringArray(R.array.video_id_array)[index];
+        Intent mVideoIntent = new Intent(this,WebVideoActivity.class);
+        mVideoIntent.putExtra(WebVideoActivity.VIDEO_INDEX, index);
+        this.startActivity(mVideoIntent);
     }
 
 
@@ -307,6 +314,67 @@ public class VideoDetailActivity extends ActionBarActivity {
             Toast.makeText(mContext, getResources().getString(R.string.title_downloading_succeeded),Toast.LENGTH_SHORT).show();
 
         }
+    }
+
+    // -----------------------------------------------------
+    // Dialogs
+    // -----------------------------------------------------
+
+    //TODO -- set up custom view to display this
+    public void showConnectionWarningDialog(){
+        Log.d(TAG, "showConnectionWarningDialog()");
+        final String ok = getResources().getString(R.string.dialog_connection_warning_ok);
+        final String dont_remind = getResources().getString(R.string.dialog_connection_warning_dont_remind_mew);
+        final String cancel = getResources().getString(R.string.dialog_connection_warning_cancel);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getResources().getString(R.string.dialog_connection_warning_message))
+                .setCancelable(false)
+                .setPositiveButton(ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startStream();
+                    }
+                })
+                .setNeutralButton(cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                       // don't do anything
+                    }
+                })
+                .setNegativeButton(dont_remind, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Utils.logger(TAG, DIALOG_DONT_REMIND_ME);
+                        mApp.setRemindOnCellularConnection();
+                        startStream();
+                    }
+                });
+
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void createShare(){
+        String shareString = String.format(getResources().getString(R.string.share_body), vi.videoTitle, vi.getVideoStreamURL());
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT,
+                getResources().getString(R.string.share_subject));
+        sharingIntent.putExtra(Intent.EXTRA_TEXT, shareString);
+        mContext.startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_title)));
+    }
+    /**
+     * Shares content
+     *
+     * @param context
+     * @param shareSubject
+     * @param shareBody
+     */
+    public static void shareContent(final Context context, String shareSubject,
+                                    String shareBody) {
+
+
     }
 
 }

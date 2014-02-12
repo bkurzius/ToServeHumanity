@@ -2,9 +2,11 @@ package com.bahaiexplorer.toservehumanity;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.bahaiexplorer.toservehumanity.model.Constants;
@@ -19,13 +21,16 @@ import java.util.ArrayList;
  */
 public class ToServeHumanityApplication extends Application {
     final static String TAG = "ToServeHumanityApplication";
+    final static String REMIND_CELLULAR_CONNECTION = "dont_remind_cellular_connection";
     public ArrayList<VideoItem> mVideoList = new ArrayList<VideoItem>();
     public TypedArray videoIconDrawables;
+    private SharedPreferences prefs;
 
     @Override
     public void onCreate() {
         super.onCreate();
         buildVideoArray();
+        this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     // build the videoArray so we don;t have to do it more than once
@@ -122,6 +127,18 @@ public class ToServeHumanityApplication extends Application {
             Log.e(TAG, "Directory not created");
         }
         return file;
+    }
+
+    public void setRemindOnCellularConnection(){
+        //set a preference not to remind on this version
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putBoolean(REMIND_CELLULAR_CONNECTION, false);
+        edit.commit();
+    }
+
+    public boolean remindOnCellularConnection(){
+        //set a preference not to remind on this version
+       return prefs.getBoolean(REMIND_CELLULAR_CONNECTION, true);
     }
 
 }

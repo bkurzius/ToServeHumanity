@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
-import com.bahaiexplorer.toservehumanity.R;
-import com.bahaiexplorer.toservehumanity.activities.HTML5WebView;
+import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
+import com.bahaiexplorer.toservehumanity.model.VideoItem;
 
 /**
  * Created by briankurzius on 2/8/14.
@@ -29,14 +29,16 @@ public class WebVideoActivity extends Activity{
         }
 
         // now get the id:
-        String videoId = getResources().getStringArray(R.array.video_id_array)[vidIndex];
+        ToServeHumanityApplication mApp = (ToServeHumanityApplication)getApplication();
+        VideoItem vi = mApp.getVideoList().get(vidIndex);
+        String videoId = vi.videoID;
         mWebView = new HTML5WebView(this);
 
         if (savedInstanceState != null) {
 
             mWebView.restoreState(savedInstanceState);
         } else {
-            mWebView.loadUrl("http://player.vimeo.com/video/" + videoId);
+            mWebView.loadUrl(vi.getVideoStreamURL());
         }
 
         setContentView(mWebView.getLayout());
