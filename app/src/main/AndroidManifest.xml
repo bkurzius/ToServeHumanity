@@ -36,11 +36,19 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_video"
             android:screenOrientation="landscape"
-            android:theme="@style/FullscreenTheme" >
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+        </activity>
+        <activity
+            android:name="com.bahaiexplorer.toservehumanity.activities.VideoActivityGingerbread"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_video"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
             android:name="com.bahaiexplorer.toservehumanity.activities.VideoDetailActivity"
-            android:label="@string/title_activity_video_detail" >
+            android:label="@string/title_activity_video_detail"
+             >
         </activity>
     </application>
 

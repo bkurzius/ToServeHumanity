@@ -1,0 +1,139 @@
+{
+"configObjects":[
+{
+    "projectName":"To Serve Humanity",
+    "language":"en",
+    "website":"http://www.bahai.org/toserve",
+    "facebookPage":"",
+    "strings":{
+        "titleSave":"Save",
+        "titleSaved":"Saved",
+        "titleShare":"Share",
+        "titleTerms":"Terms of use",
+        "titleSaving":"Saving",
+        "titleAlreadySaved":"This video is already saved.",
+        "titleSaveSucceeded":"saved",
+        "textTerms":"Terms of Use",
+
+        "textIntro":"In February 2013, the Universal House of Justice announced a series of youth
+         conferences to be held around the world. Thousands of young people from villages and
+         neighbourhoods spanning every continent gathered to consult on the ways in which their
+         generation can contribute to the spiritual and material well-being of their communities.
+          \n \n
+         This series of short films captures the insights and conversation among participants as
+         they explore some of the themes that are central to the process of community building.
+         The words of &#39;Abdu&#39;l&#45;Bah&#225;, &#34;God is the helper of those souls whose
+         aim is to serve humanity and whose efforts and endeavours are devoted to the good and
+         betterment of all mankind&#34;, inspirethe hearts of many youth, who are collectively striving
+         to translate their aspirations into reality.",
+
+         "alertCellularData":"You are currently using cellular data and may incur costs from your
+          carrier to view these videos. You can also save them over Wifi so they can be seen without an internet connection."
+
+    },
+    "videos":[
+        {
+           "title":"Introduction",
+           "id":"85625600",
+           "fileName":"introduction",
+           "streamingURL":"http://player.vimeo.com/video/85625600",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+        },
+        {
+           "title":"Contributing to the Betterment of Society",
+           "id":"85618298",
+           "fileName":"contributing_to_the_betterment_of_society",
+           "streamingURL":"http://player.vimeo.com/video/85618298",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+
+        },
+        {
+           "title":"Twofold Moral Purpose",
+           "id":"85626038",
+           "fileName":"twofold_moral_purpose",
+           "streamingURL":"http://player.vimeo.com/video/85626038",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+        },
+        {
+           "title":"Early Adolescence",
+           "id":"85618570",
+           "fileName":"early_adolescence",
+           "streamingURL":"http://player.vimeo.com/video/85618570",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+        },
+        {
+           "title":"Selfless Service",
+           "id":"85618912",
+           "fileName":"selfless_service",
+           "streamingURL":"http://player.vimeo.com/video/85618912",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+        },
+        {
+           "title":"Friendship and Mutual Support",
+           "id":"85619318",
+           "fileName":"friendship_and_mutual_support",
+           "streamingURL":"http://player.vimeo.com/video/85619318",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+        },
+        {
+           "title":"Coherence",
+           "id":"85618565",
+           "fileName":"coherence",
+           "streamingURL":"http://player.vimeo.com/video/85618565",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+        },
+        {
+           "title":"Youth and Community Building",
+           "id":"85618909",
+           "fileName":"youth_and_community_building",
+           "streamingURL":"http://player.vimeo.com/video/85618909",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+        },
+        {
+           "title":"Qualities for Collective Action",
+           "id":"85619227",
+           "fileName":"qualities_for_collective_action",
+           "streamingURL":"http://player.vimeo.com/video/85619227",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+        },
+        {
+           "title":"Building a New Civilization",
+           "id":"85619428",
+           "fileName":"building_a_new_civilization",
+           "streamingURL":"http://player.vimeo.com/video/85619428",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+        },
+        {
+           "title":"Responding to the Call",
+           "id":"85630367",
+           "fileName":"responding_to_the_call",
+           "streamingURL":"http://player.vimeo.com/video/85630367",
+           "downloadURL":"",
+           "length": "",
+           "downloadSize":""
+        }
+    ]
+}
+
+
+]}

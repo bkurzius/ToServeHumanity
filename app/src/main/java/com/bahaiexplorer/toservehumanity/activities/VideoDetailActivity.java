@@ -77,9 +77,14 @@ public class VideoDetailActivity extends ActionBarActivity {
             saveDrawable = R.drawable.ic_action_saved;
             saveTxt = "Saved";
         }
+        MenuItem mi = menu.getItem(0);
+        mi.setIcon(saveDrawable);
+        mi.setTitle(saveTxt);
+        /*MenuItemCompat savedItem = new MenuItemCompat();
+        //savedItem.
         menu.add(0,MENU_ITEM_ID_SAVED,0,saveTxt)
-                .setIcon(saveDrawable)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);;
+                .setIcon(saveDrawable);
+               // .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);*/
         return true;
     }
 
@@ -89,7 +94,7 @@ public class VideoDetailActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == MENU_ITEM_ID_SAVED) {
+        if (id == R.id.action_save) {
             requestDownload();
             return true;
         }else if (id == R.id.action_share){
@@ -194,8 +199,8 @@ public class VideoDetailActivity extends ActionBarActivity {
         if(mApp.isVideoFileSaved(mContext, mFileName)){
             Log.d(TAG,"file is saved - s play it");
             //its saved so get it and play it
-            Intent intent = new Intent(this,VideoActivity.class);
-            intent.putExtra(VideoActivity.FILE_NAME,mFileName);
+            Intent intent = new Intent(this,VideoActivityGingerbread.class);
+            intent.putExtra(VideoActivityGingerbread.FILE_NAME,mFileName);
             startActivity(intent);
             /*FileInputStream fis;
             try{
@@ -310,7 +315,9 @@ public class VideoDetailActivity extends ActionBarActivity {
             // dismiss the dialog after the file was downloaded
             dismissDialog(progress_bar_type);
             vi.isSaved = true;
-            invalidateOptionsMenu();
+           // invalidateOptionsMenu();
+
+            supportInvalidateOptionsMenu();
             Toast.makeText(mContext, getResources().getString(R.string.title_downloading_succeeded),Toast.LENGTH_SHORT).show();
 
         }
@@ -376,5 +383,7 @@ public class VideoDetailActivity extends ActionBarActivity {
 
 
     }
+
+
 
 }

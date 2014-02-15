@@ -8,9 +8,9 @@
     <string name="action_share">Share</string>
     <string name="action_download_and_share">Download and Share videos</string>
 
-    <string name="title_already_downloaded">Video is already downloaded.</string>
-    <string name="title_downloading_video">Downloading video, please wait</string>
-    <string name="title_downloading_succeeded">Download succeeded</string>
+    <string name="title_already_downloaded">Video is already saved.</string>
+    <string name="title_downloading_video">Saving video, please wait</string>
+    <string name="title_downloading_succeeded">Save completed</string>
     <string name="title_introduction">Introduction</string>
     <string name="title_contributing">Contributing to the Betterment of Society</string>
     <string name="title_twofold">Twofold Moral Purpose</string>

@@ -11,9 +11,13 @@ import android.util.Log;
 
 import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.model.VideoItem;
+import com.bahaiexplorer.toservehumanity.util.JsonUtils;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
+
 
 
 /**
@@ -25,6 +29,9 @@ public class ToServeHumanityApplication extends Application {
     public ArrayList<VideoItem> mVideoList = new ArrayList<VideoItem>();
     public TypedArray videoIconDrawables;
     private SharedPreferences prefs;
+    private JSONObject jsonObj;
+
+    private String configURL = "http://bahaiexplorer.com/toservehumanity/config.json";
 
     @Override
     public void onCreate() {
@@ -61,6 +68,9 @@ public class ToServeHumanityApplication extends Application {
             mVideoList.add(vi);
         }
         videoIconDrawables.recycle();
+
+        JsonUtils jsonUtils = new JsonUtils();
+        jsonUtils.getJSONfromURL(configURL);
     }
 
     public ArrayList<VideoItem> getVideoList(){
@@ -69,11 +79,13 @@ public class ToServeHumanityApplication extends Application {
 
     static public boolean isVideoFileSaved(final Context context, String fileName){
         File[] files = getSavedFiles();
-        for(File file:files){
-            Log.d(TAG, "file.getName(): " + file.getName());
-            // now check if the fiel is the one we are looking for
-            if(file.getName().indexOf(fileName)>-1){
-                return true;
+        if(files!=null){
+            for(File file:files){
+                Log.d(TAG, "file.getName(): " + file.getName());
+                // now check if the fiel is the one we are looking for
+                if(file.getName().indexOf(fileName)>-1){
+                    return true;
+                }
             }
         }
         return false;

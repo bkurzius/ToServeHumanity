@@ -1,13 +1,7 @@
 package com.bahaiexplorer.toservehumanity.activities;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -21,9 +15,9 @@ import java.io.File;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  *
- * @see SystemUiHider
+ * @see com.bahaiexplorer.toservehumanity.util.SystemUiHider
  */
-public class VideoActivity extends Activity implements MediaController.MediaPlayerControl{
+public class VideoActivityGingerbread extends Activity implements MediaController.MediaPlayerControl{
 
     public final static String FILE_NAME = "file_name";
     public final static String TAG = "VideoActivity";
@@ -47,12 +41,12 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
     private static final boolean TOGGLE_ON_CLICK = true;
 
     /**
-     * The flags to pass to {@link SystemUiHider#getInstance}.
+     * The flags to pass to {@link com.bahaiexplorer.toservehumanity.util.SystemUiHider#getInstance}.
      */
     private static final int HIDER_FLAGS = SystemUiHider.FLAG_HIDE_NAVIGATION;
 
     /**
-     * The instance of the {@link SystemUiHider} for this activity.
+     * The instance of the {@link com.bahaiexplorer.toservehumanity.util.SystemUiHider} for this activity.
      */
     private SystemUiHider mSystemUiHider;
 
@@ -62,7 +56,7 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
+        setContentView(R.layout.activity_video_gingerbread);
         mApp = (ToServeHumanityApplication)getApplication();
         // get the file name from the intent
         String fileName = getIntent().getStringExtra(FILE_NAME);
@@ -71,22 +65,23 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
 
         VideoView video=(VideoView) findViewById(R.id.video_view);
         mediaController = new MediaController(this);
-        //mediaController.setAnchorView(video);
+       // mediaController.setAnchorView(video);
 
         video.setMediaController(mediaController);
-        video.setKeepScreenOn(true);
+        //video.setKeepScreenOn(true);
         video.setVideoPath(videoFile.getPath());
         video.start();
-        video.requestFocus();
 
-        mediaController.show();
+    }
+        //video.requestFocus();
+       // mediaController.show();
 
-
-
+/*
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.video_view);
+*/
 
-        // Set up an instance of SystemUiHider to control the system UI for
+/*        // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
         mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
         mSystemUiHider.setup();
@@ -118,7 +113,7 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
                             // If the ViewPropertyAnimator APIs aren't
                             // available, simply show or hide the in-layout UI
                             // controls.
-                            controlsView.setVisibility(visible ? View.VISIBLE : View.GONE);
+                           // controlsView.setVisibility(visible ? View.VISIBLE : View.GONE);
 
                         }
 
@@ -147,9 +142,9 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         //findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
-    }
+    }*/
 
-    @Override
+/*    @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
@@ -157,7 +152,7 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
         // created, to briefly hint to the user that UI controls
         // are available.
         delayedHide(100);
-    }
+    }*/
 
 
     /**
@@ -165,7 +160,7 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
      */
-    View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
+/*    View.OnTouchListener mDelayHideTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
             Log.d(TAG,"onTouch");
@@ -177,7 +172,7 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
     };
 
     Handler mHideHandler = new Handler();
-    Runnable mHideRunnable = new Runnable() {
+    */Runnable mHideRunnable = new Runnable() {
         @Override
         public void run() {
             mSystemUiHider.hide();
@@ -188,11 +183,11 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
      * Schedules a call to hide() in [delay] milliseconds, canceling any
      * previously scheduled calls.
      */
-    private void delayedHide(int delayMillis) {
+/*    private void delayedHide(int delayMillis) {
         Log.d(TAG,"delayedHide");
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
-    }
+    }*/
 
 
     @Override
