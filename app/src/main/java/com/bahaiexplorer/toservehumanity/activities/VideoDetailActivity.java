@@ -25,6 +25,7 @@ import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
 import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.model.VideoItem;
 import com.bahaiexplorer.toservehumanity.util.ConnectionUtils;
+import com.bahaiexplorer.toservehumanity.util.UIUtils;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;
@@ -199,9 +200,11 @@ public class VideoDetailActivity extends ActionBarActivity {
         if(mApp.isVideoFileSaved(mContext, mFileName)){
             Log.d(TAG,"file is saved - s play it");
             //its saved so get it and play it
-            Intent intent = new Intent(this,VideoActivityGingerbread.class);
-            intent.putExtra(VideoActivityGingerbread.FILE_NAME,mFileName);
-            startActivity(intent);
+
+                Intent intent = new Intent(this,VideoActivityGingerbread.class);
+                intent.putExtra(VideoActivityGingerbread.FILE_NAME,mFileName);
+                startActivity(intent);
+
             /*FileInputStream fis;
             try{
                 fis = new FileInputStream(videoFile);
@@ -216,12 +219,17 @@ public class VideoDetailActivity extends ActionBarActivity {
 
         }else{
             Log.d(TAG,"file is NOT saved - so stream it");
-            if(ConnectionUtils.isUsingCellularConnection(mContext) && mApp.remindOnCellularConnection()){
-                // show dialog to be sure that they want to stream
-               // Toast.makeText(mContext,"Are you sure you want to use cell data for this? You can download it instead.", Toast.LENGTH_LONG).show();
-                showConnectionWarningDialog();
+            if(UIUtils.isOSLessThanHoneycomb()){
+                Toast.makeText(mContext,mContext.getResources().getString(R.string
+                    .alert_need_to_save),Toast.LENGTH_LONG).show();
             }else{
-                startStream();
+                if(ConnectionUtils.isUsingCellularConnection(mContext) && mApp.remindOnCellularConnection()){
+                    // show dialog to be sure that they want to stream
+                   // Toast.makeText(mContext,"Are you sure you want to use cell data for this? You can download it instead.", Toast.LENGTH_LONG).show();
+                    showConnectionWarningDialog();
+                }else{
+                    startStream();
+                }
             }
         }
 

@@ -8,6 +8,11 @@
     <string name="action_share">Share</string>
     <string name="action_download_and_share">Download and Share videos</string>
 
+    <string name="alert_need_to_save">You will need to save the video
+        before you can play it. Just press the save button on the actionbar above and
+        wait until the video has fully downloaded.</string>
+
+
     <string name="title_already_downloaded">Video is already saved.</string>
     <string name="title_downloading_video">Saving video, please wait</string>
     <string name="title_downloading_succeeded">Save completed</string>

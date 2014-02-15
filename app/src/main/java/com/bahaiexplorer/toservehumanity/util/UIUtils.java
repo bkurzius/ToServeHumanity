@@ -2,6 +2,7 @@ package com.bahaiexplorer.toservehumanity.util;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.Build;
 
 /**
  * Created by briankurzius on 2/8/14.
@@ -15,6 +16,12 @@ public class UIUtils {
             }
             return false;
         }
+        return false;
+    }
+
+    public static boolean isOSLessThanHoneycomb(){
+        if (android.os.Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB)
+            return true;
         return false;
     }
 
