@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -28,11 +29,14 @@ import com.bahaiexplorer.toservehumanity.util.ConnectionUtils;
 import com.bahaiexplorer.toservehumanity.util.UIUtils;
 
 import java.io.BufferedInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
+
+
 
 public class VideoDetailActivity extends ActionBarActivity {
     public static final String TAG = "VideoDetailActivity";
@@ -47,6 +51,8 @@ public class VideoDetailActivity extends ActionBarActivity {
     private String downloadFileName;
     private Context mContext;
     private String mFileStoragePath;
+
+    private CountDownTimer mDeleteVideoTimer;
 
     ToServeHumanityApplication mApp;
     static final int progress_bar_type = 0;
@@ -159,10 +165,10 @@ public class VideoDetailActivity extends ActionBarActivity {
         Log.d(TAG,"downloadFileName: " + downloadFileName);
         String mFileName = downloadFileName + "_" + vi.videoLanguage + "_" + Constants.VIDEO_SIZE  + Constants.VIDEO_SUFFIX;
 
-        // now check if the file has been saved already
+        // check if the file has been saved already - if so warn them that they are going to
+        // delete it
         if(mApp.isVideoFileSaved(mContext, mFileName)){
-            //its saved so you don;t need to again
-            Toast.makeText(this, getResources().getString(R.string.title_already_downloaded), Toast.LENGTH_SHORT).show();
+            showDeleteVideoWarningDialog();
         }else{
             mFileStoragePath = mApp.getAlbumStorageDir(Constants.VIDEO_FOLDER).toString() + "/" + mFileName;
             String mFileURL = Constants.DOWNLOAD_PATH + mFileName;
@@ -170,6 +176,23 @@ public class VideoDetailActivity extends ActionBarActivity {
         }
 
     }
+
+    private void deleteVideoFile(){
+        downloadFileName = vi.videoFileName;
+        Log.d(TAG,"downloadFileName: " + downloadFileName);
+        String mFileName = downloadFileName + "_" + vi.videoLanguage + "_" + Constants.VIDEO_SIZE  + Constants.VIDEO_SUFFIX;
+        File file =  mApp.getSavedVideoFile(mContext, mFileName);
+        boolean deleted = file.delete();
+        if(deleted){
+            vi.isSaved = false;
+            Toast.makeText(mContext, getResources().getString(R.string.title_video_file_deleted),
+                    Toast.LENGTH_SHORT).show();
+            supportInvalidateOptionsMenu();
+        }
+    }
+
+
+
 
     /**
      * Showing Dialog
@@ -180,7 +203,7 @@ public class VideoDetailActivity extends ActionBarActivity {
         switch (id) {
             case progress_bar_type: // we set this to 0
                 pDialog = new ProgressDialog(this);
-                pDialog.setMessage("Downloading file. Please wait...");
+                pDialog.setMessage(mContext.getResources().getString(R.string.title_downloading_video));
                 pDialog.setIndeterminate(false);
                 pDialog.setMax(100);
                 pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -198,27 +221,11 @@ public class VideoDetailActivity extends ActionBarActivity {
         String mFileName = vi.videoFileName + "_" + Constants.LANGUAGE + "_" + Constants.VIDEO_SIZE  + Constants.VIDEO_SUFFIX;
         // now check if the file has been saved already
         if(mApp.isVideoFileSaved(mContext, mFileName)){
-            Log.d(TAG,"file is saved - s play it");
-            //its saved so get it and play it
-
+            Log.d(TAG,"file is saved - so play it");
                 Intent intent = new Intent(this,VideoActivityGingerbread.class);
                 intent.putExtra(VideoActivityGingerbread.FILE_NAME,mFileName);
                 startActivity(intent);
-
-            /*FileInputStream fis;
-            try{
-                fis = new FileInputStream(videoFile);
-                MediaPlayer mp = new MediaPlayer();
-                mp.setDataSource(fis.getFD());
-                fis.close();
-                mp.prepare();
-                mp.start();
-            }catch (IOException e){
-                Toast.makeText(this,"unknown video error", Toast.LENGTH_SHORT).show();
-            }*/
-
         }else{
-            Log.d(TAG,"file is NOT saved - so stream it");
             if(UIUtils.isOSLessThanHoneycomb()){
                 Toast.makeText(mContext,mContext.getResources().getString(R.string
                     .alert_need_to_save),Toast.LENGTH_LONG).show();
@@ -232,8 +239,6 @@ public class VideoDetailActivity extends ActionBarActivity {
                 }
             }
         }
-
-
     }
 
     private void startStream(){
@@ -323,8 +328,6 @@ public class VideoDetailActivity extends ActionBarActivity {
             // dismiss the dialog after the file was downloaded
             dismissDialog(progress_bar_type);
             vi.isSaved = true;
-           // invalidateOptionsMenu();
-
             supportInvalidateOptionsMenu();
             Toast.makeText(mContext, getResources().getString(R.string.title_downloading_succeeded),Toast.LENGTH_SHORT).show();
 
@@ -362,6 +365,33 @@ public class VideoDetailActivity extends ActionBarActivity {
                         //Utils.logger(TAG, DIALOG_DONT_REMIND_ME);
                         mApp.setRemindOnCellularConnection();
                         startStream();
+                    }
+                });
+
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    //TODO -- set up custom view to display this
+    public void showDeleteVideoWarningDialog(){
+        Log.d(TAG, "showDeleteVideoWarningDialog()");
+        final String ok = getResources().getString(R.string.dialog_delete_video_warning_ok);
+        final String cancel = getResources().getString(R.string
+                .dialog_delete_video_warning_cancel);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getResources().getString(R.string.dialog_delete_video_warning_message))
+                .setCancelable(false)
+                .setPositiveButton(ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        deleteVideoFile();
+                    }
+                })
+                .setNeutralButton(cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // don't do anything
                     }
                 });
 
