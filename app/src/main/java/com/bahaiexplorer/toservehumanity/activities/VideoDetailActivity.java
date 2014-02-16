@@ -6,17 +6,18 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +40,7 @@ import java.net.URLConnection;
 
 
 
-public class VideoDetailActivity extends ActionBarActivity {
+public class VideoDetailActivity extends BaseActivity {
     public static final String TAG = "VideoDetailActivity";
     public static final String EXTRA_TITLE = "extra_title";
     public static final String EXTRA_LENGTH = "extra_length";
@@ -53,6 +54,7 @@ public class VideoDetailActivity extends ActionBarActivity {
     private String mFileStoragePath;
 
     private CountDownTimer mDeleteVideoTimer;
+    private Button btnFacebook;
 
     ToServeHumanityApplication mApp;
     static final int progress_bar_type = 0;
@@ -149,6 +151,18 @@ public class VideoDetailActivity extends ActionBarActivity {
             tvLength.setText(vo.length);
             tvSize.setText(vo.downloadSize);
 
+            Button btnFacebook = (Button) rootView.findViewById(R.id.btn_facebutton);
+            btnFacebook.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String facebookURL = ((VideoDetailActivity)getActivity()).mApp
+                            .currLanguageConfig.facebookPage;
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(facebookURL));
+                    startActivity(intent);
+                }
+            });
+
             iv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -158,9 +172,22 @@ public class VideoDetailActivity extends ActionBarActivity {
 
 
 
+
             return rootView;
         }
     }
+
+  /*  public Intent getOpenFacebookIntent(String pId) {
+
+        try {
+            getPackageManager().getPackageInfo("com.facebook.katana", 0);
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("facebook:/groups?album=0&photo=" +
+                    pId+"&user="+ownerId));
+        } catch (Exception e) {
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/"));
+        }
+    }
+*/
 
     private void requestDownload(){
         Log.d(TAG," vo.downloadFileName: " + vo.downloadFileName);

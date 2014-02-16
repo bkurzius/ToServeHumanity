@@ -38,6 +38,7 @@
         android:layout_marginTop="20dp"
         android:textAppearance="?android:attr/textAppearanceLarge"/>
     <LinearLayout
+        android:id="@+id/length_holder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -61,7 +62,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
+
  />
+
     </LinearLayout>
+    <Button
+        android:id="@+id/btn_facebutton"
+        android:text="@string/title_facebook_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/length_holder"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
 
 </RelativeLayout>
