@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,13 +21,15 @@ import android.widget.TextView;
 
 import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
+import com.bahaiexplorer.toservehumanity.fragments.LanguageDialogFragment;
 import com.bahaiexplorer.toservehumanity.model.VideoItem;
 import com.bahaiexplorer.toservehumanity.model.VideoObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends BaseActivity implements ToServeHumanityApplication
+        .LanguageChangedListener, ToServeHumanityApplication.ConfigChangedListener{
     private static final String TAG = "MainActivity";
 
     private ToServeHumanityApplication mApp;
@@ -40,6 +41,7 @@ public class MainActivity extends ActionBarActivity {
     // Progress Dialog
     private ProgressDialog pDialog;
     public static final int progress_bar_type = 0;
+    CustomListAdapter adapter;
 
     // File url to download
     // javascript:selectDownload('twofold_moral_purpose_en_high.mp4');
@@ -54,6 +56,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mApp = (ToServeHumanityApplication)getApplication();
+        setListeners();
         mContext = this;
 
         if (savedInstanceState == null) {
@@ -68,13 +71,23 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public void onResume(){
         super.onResume();
-        mIconListView.setAdapter(new CustomListAdapter(this, R.layout.list_item_view, mApp.getVideoList()));
+        //setAdapter();
+    }
+
+    private void setListeners(){
+        // set up listeners
+        mApp.addLanguageListener(this);
+        mApp.addConfigListener(this);
+    }
+
+    public void setAdapter(){
+        adapter = new CustomListAdapter(this, R.layout.list_item_view, mApp.getVideoList());
+        mIconListView.setAdapter(adapter);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -86,8 +99,9 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_download_and_share) {
-            openDownloadAndShare();
+        if (id == R.id.action_language) {
+            LanguageDialogFragment langDialog = new LanguageDialogFragment();
+            langDialog.show(this.getSupportFragmentManager(), "lang");
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -102,7 +116,6 @@ public class MainActivity extends ActionBarActivity {
 
     private void openDownloadAndShare(){
         Intent intent = new Intent(this, DownloadAndShareActivity.class);
-
         startActivity(intent);
     }
 
@@ -173,6 +186,22 @@ public class MainActivity extends ActionBarActivity {
             return v;
         }
 
+    }
+
+    public void setLanguage(String lang){
+        mApp.setLanguagePreference(lang);
+    }
+
+
+    // ToServeHumanityApplication.LanguageChangedListener
+    public void languageChanged(){
+        Log.d(TAG,"the language was changed so rebuild the list");
+        setAdapter();
+    }
+
+    public void configChanged(){
+        Log.d(TAG,"the config was changed so rebuild the list");
+        setAdapter();
     }
 
 

@@ -2,8 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.bahaiexplorer.toservehumanity.activities.MainActivity" >
-    <item android:id="@+id/action_download_and_share"
-        android:title="@string/action_download_and_share"
+    <item android:id="@+id/action_language"
+        android:title="@string/action_language"
         android:orderInCategory="100"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 </menu>

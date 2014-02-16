@@ -11,7 +11,7 @@ import android.util.Log;
 
 import com.bahaiexplorer.toservehumanity.model.ConfigObjects;
 import com.bahaiexplorer.toservehumanity.model.Constants;
-import com.bahaiexplorer.toservehumanity.model.VideoItem;
+import com.bahaiexplorer.toservehumanity.model.Language;
 import com.bahaiexplorer.toservehumanity.model.VideoObject;
 import com.bahaiexplorer.toservehumanity.util.JsonUtils;
 
@@ -27,53 +27,42 @@ import java.util.ArrayList;
  */
 public class ToServeHumanityApplication extends Application implements JsonUtils.ConfigListener{
     final static String TAG = "ToServeHumanityApplication";
-    final static String REMIND_CELLULAR_CONNECTION = "dont_remind_cellular_connection";
     public ArrayList<VideoObject> mVideoObjList;
     public TypedArray videoIconDrawables;
     private SharedPreferences prefs;
     private JSONObject jsonObj;
+    public ConfigObjects config;
+    public ConfigObjects.ConfigObject currLanguageConfig;
+    public ArrayList<LanguageChangedListener> languageChangeListeners = new ArrayList
+            <LanguageChangedListener>();
+    public ArrayList<ConfigChangedListener> configChangeListeners = new ArrayList
+            <ConfigChangedListener>();
 
+
+    public interface LanguageChangedListener{
+        public void languageChanged();
+    }
+    public interface ConfigChangedListener{
+        public void configChanged();
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        buildVideoArray();
         this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        JsonUtils jsonUtils = new JsonUtils();
+        jsonUtils.loadConfigFromApp(this);
+        jsonUtils.getJSONfromURL(Constants.CONFIG_URL, this);
     }
 
-    // build the videoArray so we don;t have to do it more than once
-    private void buildVideoArray(){
-        mVideoObjList = new ArrayList<VideoObject>();
-        videoIconDrawables = getResources().obtainTypedArray(R.array.video_icon_array);
 
-        String[] videoTitleArray = getResources().getStringArray(R.array.video_title_array);
-        String[] videoIDArray = getResources().getStringArray(R.array.video_id_array);
-        String[] videoFileNameArray = getResources().getStringArray(R.array.video_file_name_array);
-        String[] videoIconDrawableArray = getResources().getStringArray(R.array.video_icon_array);
 
-        for(int i =0; i<videoTitleArray.length;i++){
-            String videoTitle = videoTitleArray[i];
-            String videoID = videoIDArray[i];
-            String videoFileName = videoFileNameArray[i];
-            //String videoIconDrawable = videoIconDrawableArray[i];
-            VideoObject vo = new VideoObject();
-            vo.title = videoTitle;
-            vo.id = videoID;
-            vo.fileName = videoFileName;
-            vo.language = VideoItem.VIDEO_LANGUAGE_ENGLISH;
-            vo.iconDrawable = (Drawable) videoIconDrawables.getDrawable(i);
-            // TODO - set the proper length
-            vo.length = "60min";
-            // TODO - set te file path properly
-            String filePath = vo.fileName + "_en_standard.mp4";
-            boolean isFileSaved = isVideoFileSaved(getApplicationContext(),filePath);
-            vo.isSaved = isFileSaved;
-            mVideoObjList.add(vo);
-        }
-        videoIconDrawables.recycle();
+    public void addLanguageListener(LanguageChangedListener listener){
+        languageChangeListeners.add(listener);
+    }
 
-        JsonUtils jsonUtils = new JsonUtils();
-        jsonUtils.getJSONfromURL(Constants.CONFIG_URL, this);
+    public void addConfigListener(ConfigChangedListener listener){
+        configChangeListeners.add(listener);
     }
 
 
@@ -147,31 +136,37 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
         return file;
     }
 
-    public void setRemindOnCellularConnection(){
-        //set a preference not to remind on this version
-        SharedPreferences.Editor edit = prefs.edit();
-        edit.putBoolean(REMIND_CELLULAR_CONNECTION, false);
-        edit.commit();
-    }
-
-    public boolean remindOnCellularConnection(){
-        //set a preference not to remind on this version
-       return prefs.getBoolean(REMIND_CELLULAR_CONNECTION, true);
-    }
 
     // the callback when the config is loaded
-    public void configLoaded(ConfigObjects config){
+    public void configLoaded(ConfigObjects _config){
+        config = _config;
+        loadConfigValues();
+        for(ConfigChangedListener list: configChangeListeners){
+            list.configChanged();;
+        }
+    }
+
+    public void loadConfigValues(){
         ArrayList<VideoObject> videos = null;
-        // TODO load the first one by default - but later get them by language
+
         Log.d(TAG,"config:  " + config );
         if(config!=null){
             ArrayList<ConfigObjects.ConfigObject> configObjects = config.configObjects;
-            Log.d(TAG,"configObjects:" + configObjects.size());
             if(configObjects!=null){
-                ConfigObjects.ConfigObject co = configObjects.get(0);
-                Log.d(TAG,"configObject:" + co);
-                if(co!=null){
-                     videos = co.videos;
+                // TODO load the first one by default - if the correct language one is not
+                // available
+                int languageIndex = 0;
+                for(int i=0; i<configObjects.size();i++){
+                    ConfigObjects.ConfigObject config = configObjects.get(i);
+                    if(config.language.equalsIgnoreCase(getLanguagePreference())){
+                        languageIndex = i;
+                        break;
+                    }
+                }
+                Log.d(TAG,"the language is: " + languageIndex);
+                currLanguageConfig = configObjects.get(languageIndex);
+                if(currLanguageConfig!=null){
+                    videos = currLanguageConfig.videos;
                     Log.d(TAG,"videos:  " + videos );
                 }
             }
@@ -187,11 +182,98 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
                     boolean isFileSaved = isVideoFileSaved(getApplicationContext(),vo.downloadFileName);
                     vo.isSaved = isFileSaved;
                 }catch(Error e){
-                   Log.e(TAG,"mission control issue");
+                    Log.e(TAG,"mission control issue");
                 }
             }
         }
+    }
+
+    // **** PREFERENCES ****
+
+    public void setLanguagePreference(String language){
+        //set a preference not to remind on this version
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putString(Constants.PREFERENCE_KEY_LANGUAGE, language);
+        edit.commit();
+
+        loadConfigValues();
+        for(LanguageChangedListener list: languageChangeListeners){
+            list.languageChanged();
+        }
 
     }
+
+    public String getLanguagePreference(){
+        //set a preference not to remind on this version
+        return prefs.getString(Constants.PREFERENCE_KEY_LANGUAGE, Constants.LANGUAGE_ENGLISH);
+    }
+
+    public int getLanguagePreferenceIndex(){
+        int index = 0;
+        String lang = getLanguagePreference();
+        // now loop through the langarray and get the index
+        ArrayList<Language> langArray = getLanguageArray();
+        for(int i =0; i<langArray.size(); i++){
+            Language language = langArray.get(i);
+            Log.d(TAG,"the current lang is:" + language.id);
+            Log.d(TAG,"the lang in the pref is:" + lang);
+            Log.d(TAG,"the index is:" + i);
+            if(language.id.equalsIgnoreCase(lang)){
+                index = i;
+                Log.d(TAG,"got it:" + i);
+                break;
+            }
+
+        }
+        //set a preference not to remind on this version
+        return index;
+    }
+
+
+    public void setRemindOnCellularConnection(){
+        //set a preference not to remind on this version
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putBoolean(Constants.PREFERENCE_KEY_CELLULAR_REMINDER, false);
+        edit.commit();
+    }
+
+    public boolean remindOnCellularConnection(){
+        return prefs.getBoolean(Constants.PREFERENCE_KEY_CELLULAR_REMINDER, true);
+    }
+
+    /**
+     * returns a ArrayList of the languages available
+     * @return
+     */
+    public ArrayList<Language> getLanguageArray(){
+        ArrayList<Language> languageArray = new ArrayList<Language>();
+
+        Language lang = new Language(getResources().getString(R.string.language_name_english),
+                getResources().getString(R.string.language_id_english));
+        languageArray.add(lang);
+
+        lang = new Language(getResources().getString(R.string.language_name_spanish),
+                getResources().getString(R.string.language_id_spanish));
+        languageArray.add(lang);
+
+        lang = new Language(getResources().getString(R.string.language_name_french),
+                getResources().getString(R.string.language_id_french));
+        languageArray.add(lang);
+
+        lang = new Language(getResources().getString(R.string.language_name_russian),
+                getResources().getString(R.string.language_id_russian));
+        languageArray.add(lang);
+
+        lang = new Language(getResources().getString(R.string.language_name_farsi),
+                getResources().getString(R.string.language_id_farsi));
+        languageArray.add(lang);
+
+        lang = new Language(getResources().getString(R.string.language_name_arabic),
+                getResources().getString(R.string.language_id_arabic));
+        languageArray.add(lang);
+
+        return languageArray;
+    }
+
 
 }

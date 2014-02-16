@@ -1,5 +1,6 @@
 package com.bahaiexplorer.toservehumanity.util;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -42,6 +43,12 @@ public class JsonUtils {
         new GetJsonFromHTTP().execute(url);
 
     }
+
+    public void loadConfigFromApp(ConfigListener listener) {
+        mListener = listener;
+        new LoadConfigFromApp().execute("");
+    }
+
 
     public static <U> U convertToClassFromJson(Class<U> clazz, String jo) {
 
@@ -126,4 +133,62 @@ public class JsonUtils {
         @Override
         protected void onProgressUpdate(Void... values) {}
     }
+
+
+    private class LoadConfigFromApp extends AsyncTask<String, Void, ConfigObjects> {
+        JSONObject jsonObj;
+        ConfigObjects configObjs;
+        @Override
+        protected ConfigObjects doInBackground(String... params) {
+            InputStream is = null;
+            String result = "";
+            JSONObject jArray = null;
+
+            // convert response to string
+            try {
+
+                is = ((Context)mListener).getAssets().open("config.json");
+                Log.d(TAG,"the input stream is: " + is);
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(is, "UTF-8"));
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line + "\n");
+                }
+                is.close();
+                result = sb.toString();
+                Log.i(TAG, "This is the json result: " + result);
+
+                configObjs = JsonUtils.convertToClassFromJson(ConfigObjects
+                        .class,
+                        sb.toString());
+                if(configObjs!=null){
+                    Log.d(TAG, "GetJsonFromHTTP: processJSON: configObjs:" + configObjs.toString());
+                }else{
+                    Log.d(TAG, "GetJsonFromHTTP: WAS NULL");
+                }
+
+            } catch (Exception e) {
+                Log.e(TAG, "Error converting result " + e.toString());
+                return null;
+            }
+            return configObjs;
+        }
+
+        @Override
+        protected void onPostExecute(ConfigObjects result) {
+            // Log.d(TAG,"onPostExecute:ConfigObjects: " + result.toString());
+            // call listeners with result
+            mListener.configLoaded(result);
+        }
+
+        @Override
+        protected void onPreExecute() {}
+
+        @Override
+        protected void onProgressUpdate(Void... values) {}
+    }
+
+
 }
