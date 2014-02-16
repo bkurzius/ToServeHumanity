@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.bahaiexplorer.toservehumanity.activities.MainActivity"
-            android:label="@string/app_name" >
+             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,30 +24,29 @@
         </activity>
         <activity
             android:name="com.bahaiexplorer.toservehumanity.activities.WebVideoActivity"
-            android:label="@string/app_name"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
         <activity
             android:name="com.bahaiexplorer.toservehumanity.activities.DownloadAndShareActivity"
-            android:label="@string/app_name" >
+             >
         </activity>
         <activity
             android:name="com.bahaiexplorer.toservehumanity.activities.VideoActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_video"
+
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
             android:name="com.bahaiexplorer.toservehumanity.activities.VideoActivityGingerbread"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_video"
+
             android:screenOrientation="landscape"
             android:theme="@android:style/Theme.Light.NoTitleBar" >
         </activity>
         <activity
             android:name="com.bahaiexplorer.toservehumanity.activities.VideoDetailActivity"
-            android:label="@string/title_activity_video_detail"
+
              >
         </activity>
     </application>

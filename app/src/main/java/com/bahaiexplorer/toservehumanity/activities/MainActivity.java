@@ -66,12 +66,13 @@ public class MainActivity extends BaseActivity implements ToServeHumanityApplica
         }
 
         mIconListView = (ListView)findViewById(R.id.lv_video_items);
+
     }
 
     @Override
     public void onResume(){
         super.onResume();
-        //setAdapter();
+        setAdapter();
     }
 
     private void setListeners(){
@@ -81,8 +82,13 @@ public class MainActivity extends BaseActivity implements ToServeHumanityApplica
     }
 
     public void setAdapter(){
-        adapter = new CustomListAdapter(this, R.layout.list_item_view, mApp.getVideoList());
-        mIconListView.setAdapter(adapter);
+        ArrayList<VideoObject> vl = mApp.getVideoList();
+        if(vl!=null){
+            adapter = new CustomListAdapter(this, R.layout.list_item_view,vl);
+            mIconListView.setAdapter(adapter);
+            getSupportActionBar().setTitle(mApp.currLanguageConfig.projectName);
+        }
+
     }
 
 
@@ -202,6 +208,7 @@ public class MainActivity extends BaseActivity implements ToServeHumanityApplica
     public void configChanged(){
         Log.d(TAG,"the config was changed so rebuild the list");
         setAdapter();
+
     }
 
 
