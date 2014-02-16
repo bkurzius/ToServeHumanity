@@ -184,6 +184,8 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
                 try{
                     VideoObject vo = mVideoObjList.get(i);
                     vo.iconDrawable = (Drawable) videoIconDrawables.getDrawable(i);
+                    boolean isFileSaved = isVideoFileSaved(getApplicationContext(),vo.downloadFileName);
+                    vo.isSaved = isFileSaved;
                 }catch(Error e){
                    Log.e(TAG,"mission control issue");
                 }

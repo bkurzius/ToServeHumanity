@@ -49,7 +49,6 @@ public class VideoDetailActivity extends ActionBarActivity {
 
     private int index;
     private VideoObject vo;
-    private String downloadFileName;
     private Context mContext;
     private String mFileStoragePath;
 
@@ -64,7 +63,8 @@ public class VideoDetailActivity extends ActionBarActivity {
         mApp = (ToServeHumanityApplication) getApplication();
         mContext = this;
         setContentView(R.layout.activity_video_detail);
-        vo = ((ToServeHumanityApplication) getApplication()).getVideoList().get(getIntent().getIntExtra(VideoItem.VIDEO_INDEX,0));
+        index = getIntent().getIntExtra(VideoItem.VIDEO_INDEX,0);
+        vo = ((ToServeHumanityApplication) getApplication()).getVideoList().get(index);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment(vo))
@@ -142,10 +142,12 @@ public class VideoDetailActivity extends ActionBarActivity {
             ImageView iv = (ImageView) rootView.findViewById(R.id.iv_video_icon);
             TextView tvTitle = (TextView)rootView.findViewById(R.id.tv_video_title);
             TextView tvLength = (TextView)rootView.findViewById(R.id.tv_video_length);
+            TextView tvSize = (TextView)rootView.findViewById(R.id.tv_video_size);
 
             iv.setImageDrawable(vo.iconDrawable);
             tvTitle.setText(vo.title);
             tvLength.setText(vo.length);
+            tvSize.setText(vo.downloadSize);
 
             iv.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -161,12 +163,8 @@ public class VideoDetailActivity extends ActionBarActivity {
     }
 
     private void requestDownload(){
-        // getFile name
-        downloadFileName = vo.fileName;
-        Log.d(TAG,"downloadFileName: " + downloadFileName);
-        String mFileName = downloadFileName + "_" + vo.language + "_" + Constants.VIDEO_SIZE  +
-                Constants.VIDEO_SUFFIX;
-
+        Log.d(TAG," vo.downloadFileName: " + vo.downloadFileName);
+        String mFileName = vo.downloadFileName;
         // check if the file has been saved already - if so warn them that they are going to
         // delete it
         if(mApp.isVideoFileSaved(mContext, mFileName)){
@@ -180,10 +178,8 @@ public class VideoDetailActivity extends ActionBarActivity {
     }
 
     private void deleteVideoFile(){
-        downloadFileName = vo.fileName;
-        Log.d(TAG,"downloadFileName: " + downloadFileName);
-        String mFileName = downloadFileName + "_" + vo.language + "_" + Constants.VIDEO_SIZE  +
-                Constants.VIDEO_SUFFIX;
+        Log.d(TAG," vo.downloadFileName: " + vo.downloadFileName);
+        String mFileName = vo.downloadFileName;
         File file =  mApp.getSavedVideoFile(mContext, mFileName);
         boolean deleted = file.delete();
         if(deleted){
@@ -221,8 +217,7 @@ public class VideoDetailActivity extends ActionBarActivity {
 
     public void openVideo(){
 
-        String mFileName = vo.fileName + "_" + Constants.LANGUAGE + "_" + Constants.VIDEO_SIZE  +
-                Constants.VIDEO_SUFFIX;
+        String mFileName = vo.downloadFileName;
         // now check if the file has been saved already
         if(mApp.isVideoFileSaved(mContext, mFileName)){
             Log.d(TAG,"file is saved - so play it");
@@ -414,19 +409,6 @@ public class VideoDetailActivity extends ActionBarActivity {
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareString);
         mContext.startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_title)));
     }
-    /**
-     * Shares content
-     *
-     * @param context
-     * @param shareSubject
-     * @param shareBody
-     */
-    public static void shareContent(final Context context, String shareSubject,
-                                    String shareBody) {
-
-
-    }
-
 
 
 }

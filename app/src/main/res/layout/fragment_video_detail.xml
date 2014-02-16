@@ -56,8 +56,8 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
          />
     <TextView
-        android:id="@+id/tv_video_length"
-        android:text="30Mb"
+        android:id="@+id/tv_video_size"
+        android:text="30 MB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"

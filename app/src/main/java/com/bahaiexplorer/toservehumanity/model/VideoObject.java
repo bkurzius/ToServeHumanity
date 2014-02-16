@@ -19,6 +19,10 @@ public class VideoObject {
     @Expose
     public String downloadURL = "";
     @Expose
+    public String downloadPath = "";
+    @Expose
+    public String downloadFileName = "";
+    @Expose
     public String length = "";
     @Expose
     public String downloadSize = "";

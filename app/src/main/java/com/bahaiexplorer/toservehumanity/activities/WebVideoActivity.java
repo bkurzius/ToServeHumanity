@@ -11,7 +11,6 @@ import com.bahaiexplorer.toservehumanity.model.VideoObject;
  * Created by briankurzius on 2/8/14.
  */
 public class WebVideoActivity extends Activity{
-    public static final String VIDEO_ID = "video_id";
     public static final String VIDEO_INDEX = "video_index";
 
     HTML5WebView mWebView;
@@ -31,11 +30,9 @@ public class WebVideoActivity extends Activity{
         // now get the id:
         ToServeHumanityApplication mApp = (ToServeHumanityApplication)getApplication();
         VideoObject vo = mApp.getVideoList().get(vidIndex);
-        String videoId = vo.id;
         mWebView = new HTML5WebView(this);
 
         if (savedInstanceState != null) {
-
             mWebView.restoreState(savedInstanceState);
         } else {
             mWebView.loadUrl(vo.streamingURL);
