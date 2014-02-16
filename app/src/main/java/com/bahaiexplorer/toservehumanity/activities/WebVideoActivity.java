@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
-import com.bahaiexplorer.toservehumanity.model.VideoItem;
+import com.bahaiexplorer.toservehumanity.model.VideoObject;
 
 /**
  * Created by briankurzius on 2/8/14.
@@ -30,15 +30,15 @@ public class WebVideoActivity extends Activity{
 
         // now get the id:
         ToServeHumanityApplication mApp = (ToServeHumanityApplication)getApplication();
-        VideoItem vi = mApp.getVideoList().get(vidIndex);
-        String videoId = vi.videoID;
+        VideoObject vo = mApp.getVideoList().get(vidIndex);
+        String videoId = vo.id;
         mWebView = new HTML5WebView(this);
 
         if (savedInstanceState != null) {
 
             mWebView.restoreState(savedInstanceState);
         } else {
-            mWebView.loadUrl(vi.getVideoStreamURL());
+            mWebView.loadUrl(vo.streamingURL);
         }
 
         setContentView(mWebView.getLayout());

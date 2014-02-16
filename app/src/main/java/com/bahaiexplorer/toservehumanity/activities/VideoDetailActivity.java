@@ -25,6 +25,7 @@ import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
 import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.model.VideoItem;
+import com.bahaiexplorer.toservehumanity.model.VideoObject;
 import com.bahaiexplorer.toservehumanity.util.ConnectionUtils;
 import com.bahaiexplorer.toservehumanity.util.UIUtils;
 
@@ -47,7 +48,7 @@ public class VideoDetailActivity extends ActionBarActivity {
     private ProgressDialog pDialog;
 
     private int index;
-    private VideoItem vi;
+    private VideoObject vo;
     private String downloadFileName;
     private Context mContext;
     private String mFileStoragePath;
@@ -63,10 +64,10 @@ public class VideoDetailActivity extends ActionBarActivity {
         mApp = (ToServeHumanityApplication) getApplication();
         mContext = this;
         setContentView(R.layout.activity_video_detail);
-        vi = ((ToServeHumanityApplication) getApplication()).getVideoList().get(getIntent().getIntExtra(VideoItem.VIDEO_INDEX,0));
+        vo = ((ToServeHumanityApplication) getApplication()).getVideoList().get(getIntent().getIntExtra(VideoItem.VIDEO_INDEX,0));
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment(vi))
+                    .add(R.id.container, new PlaceholderFragment(vo))
                     .commit();
         }
         getSupportActionBar().setTitle("Detail");
@@ -111,20 +112,20 @@ public class VideoDetailActivity extends ActionBarActivity {
     }
 
     private boolean isVideoSaved(){
-        return vi.isSaved;
+        return vo.isSaved;
     }
 
     /**
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
-        VideoItem vi;
+        VideoObject vo;
 
         public PlaceholderFragment() {
         }
 
-        public PlaceholderFragment(VideoItem _vi) {
-            vi = _vi;
+        public PlaceholderFragment(VideoObject _vo) {
+            vo = _vo;
 
         }
         @Override
@@ -142,9 +143,9 @@ public class VideoDetailActivity extends ActionBarActivity {
             TextView tvTitle = (TextView)rootView.findViewById(R.id.tv_video_title);
             TextView tvLength = (TextView)rootView.findViewById(R.id.tv_video_length);
 
-            iv.setImageDrawable(vi.videoIconDrawable);
-            tvTitle.setText(vi.videoTitle);
-            tvLength.setText(vi.videoLength);
+            iv.setImageDrawable(vo.iconDrawable);
+            tvTitle.setText(vo.title);
+            tvLength.setText(vo.length);
 
             iv.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -161,9 +162,10 @@ public class VideoDetailActivity extends ActionBarActivity {
 
     private void requestDownload(){
         // getFile name
-        downloadFileName = vi.videoFileName;
+        downloadFileName = vo.fileName;
         Log.d(TAG,"downloadFileName: " + downloadFileName);
-        String mFileName = downloadFileName + "_" + vi.videoLanguage + "_" + Constants.VIDEO_SIZE  + Constants.VIDEO_SUFFIX;
+        String mFileName = downloadFileName + "_" + vo.language + "_" + Constants.VIDEO_SIZE  +
+                Constants.VIDEO_SUFFIX;
 
         // check if the file has been saved already - if so warn them that they are going to
         // delete it
@@ -178,13 +180,14 @@ public class VideoDetailActivity extends ActionBarActivity {
     }
 
     private void deleteVideoFile(){
-        downloadFileName = vi.videoFileName;
+        downloadFileName = vo.fileName;
         Log.d(TAG,"downloadFileName: " + downloadFileName);
-        String mFileName = downloadFileName + "_" + vi.videoLanguage + "_" + Constants.VIDEO_SIZE  + Constants.VIDEO_SUFFIX;
+        String mFileName = downloadFileName + "_" + vo.language + "_" + Constants.VIDEO_SIZE  +
+                Constants.VIDEO_SUFFIX;
         File file =  mApp.getSavedVideoFile(mContext, mFileName);
         boolean deleted = file.delete();
         if(deleted){
-            vi.isSaved = false;
+            vo.isSaved = false;
             Toast.makeText(mContext, getResources().getString(R.string.title_video_file_deleted),
                     Toast.LENGTH_SHORT).show();
             supportInvalidateOptionsMenu();
@@ -218,7 +221,8 @@ public class VideoDetailActivity extends ActionBarActivity {
 
     public void openVideo(){
 
-        String mFileName = vi.videoFileName + "_" + Constants.LANGUAGE + "_" + Constants.VIDEO_SIZE  + Constants.VIDEO_SUFFIX;
+        String mFileName = vo.fileName + "_" + Constants.LANGUAGE + "_" + Constants.VIDEO_SIZE  +
+                Constants.VIDEO_SUFFIX;
         // now check if the file has been saved already
         if(mApp.isVideoFileSaved(mContext, mFileName)){
             Log.d(TAG,"file is saved - so play it");
@@ -327,7 +331,7 @@ public class VideoDetailActivity extends ActionBarActivity {
         protected void onPostExecute(String file_url) {
             // dismiss the dialog after the file was downloaded
             dismissDialog(progress_bar_type);
-            vi.isSaved = true;
+            vo.isSaved = true;
             supportInvalidateOptionsMenu();
             Toast.makeText(mContext, getResources().getString(R.string.title_downloading_succeeded),Toast.LENGTH_SHORT).show();
 
@@ -401,7 +405,8 @@ public class VideoDetailActivity extends ActionBarActivity {
     }
 
     private void createShare(){
-        String shareString = String.format(getResources().getString(R.string.share_body), vi.videoTitle, vi.getVideoStreamURL());
+        String shareString = String.format(getResources().getString(R.string.share_body),
+                vo.title, vo.streamingURL);
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT,

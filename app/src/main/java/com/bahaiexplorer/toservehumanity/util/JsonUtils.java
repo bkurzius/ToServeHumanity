@@ -3,7 +3,6 @@ package com.bahaiexplorer.toservehumanity.util;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.bahaiexplorer.toservehumanity.BuildConfig;
 import com.bahaiexplorer.toservehumanity.model.ConfigObjects;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -14,7 +13,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -26,7 +24,12 @@ import java.io.InputStreamReader;
  */
 public class JsonUtils {
 
+    public interface ConfigListener{
+        public void configLoaded(ConfigObjects configObjects);
+    }
+
     public final static String TAG = "JsonUtils";
+    private ConfigListener mListener;
 
     /**
      * Creates a JSONObject from a valid location on the web
@@ -34,14 +37,16 @@ public class JsonUtils {
      *            the url of the file
      * @return JSONObject
      */
-    public void getJSONfromURL(String url) {
-        new GetJsonFromHTTP().execute("http://bahaiexplorer.com/toservehumanity/config.json");
+    public void getJSONfromURL(String url, ConfigListener listener) {
+        mListener = listener;
+        new GetJsonFromHTTP().execute(url);
+
     }
 
     public static <U> U convertToClassFromJson(Class<U> clazz, String jo) {
 
         U io = null;
-        Gson gson = new GsonBuilder().create();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         try {
             io = gson.fromJson(jo, clazz);
         } catch (Error error) {
@@ -56,10 +61,11 @@ public class JsonUtils {
 
 
 
-    private class GetJsonFromHTTP extends AsyncTask<String, Void, JSONObject> {
+    private class GetJsonFromHTTP extends AsyncTask<String, Void, ConfigObjects> {
         JSONObject jsonObj;
+        ConfigObjects configObjs;
         @Override
-        protected JSONObject doInBackground(String... params) {
+        protected ConfigObjects doInBackground(String... params) {
             InputStream is = null;
             String result = "";
             JSONObject jArray = null;
@@ -90,13 +96,11 @@ public class JsonUtils {
                 result = sb.toString();
                 Log.i(TAG, "This is the json result: " + result);
 
-                ConfigObjects configObjs = JsonUtils.convertToClassFromJson(ConfigObjects
+                configObjs = JsonUtils.convertToClassFromJson(ConfigObjects
                         .class,
                         sb.toString());
                 if(configObjs!=null){
                     Log.d(TAG, "GetJsonFromHTTP: processJSON: configObjs:" + configObjs.toString());
-                Log.d(TAG,"configObjs.configObjects.get(0).projectName: " + configObjs
-                        .configObjects.get(0).projectName);
                 }else{
                     Log.d(TAG, "GetJsonFromHTTP: WAS NULL");
                 }
@@ -105,25 +109,14 @@ public class JsonUtils {
                 Log.e(TAG, "Error converting result " + e.toString());
                 return null;
             }
-            // try parse the string to a JSON object
-            // if we can't parse it because there are no results then
-            // create an empty JSONObject
-            // otherwise return null so we can display the error
-            try {
-                jArray = new JSONObject(result);
-            } catch (JSONException e) {
-                if(BuildConfig.DEBUG){
-                    Log.d(TAG, "JsonUtils.getJSONfromURL():"+e.getMessage());
-                }
-                jArray = null;
-            }
-            jsonObj = jArray;
-            return jArray;
+            return configObjs;
         }
 
         @Override
-        protected void onPostExecute(JSONObject result) {
-            Log.d(TAG,"onPostExecute:jsonObj: " + result.toString());
+        protected void onPostExecute(ConfigObjects result) {
+           // Log.d(TAG,"onPostExecute:ConfigObjects: " + result.toString());
+            // call listeners with result
+            mListener.configLoaded(result);
 
         }
 

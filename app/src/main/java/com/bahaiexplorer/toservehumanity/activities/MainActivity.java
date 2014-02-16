@@ -23,6 +23,7 @@ import android.widget.TextView;
 import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
 import com.bahaiexplorer.toservehumanity.model.VideoItem;
+import com.bahaiexplorer.toservehumanity.model.VideoObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,15 +126,15 @@ public class MainActivity extends ActionBarActivity {
 
     // Here is your custom Adapter
 
-    public class CustomListAdapter extends ArrayAdapter<VideoItem> {
-        ArrayList<VideoItem> viList;
+    public class CustomListAdapter extends ArrayAdapter<VideoObject> {
+        ArrayList<VideoObject> viList;
         int vView;
 
         // Constructor
         public CustomListAdapter(Context context, int layoutResourceId,
-                                 List<VideoItem> objects) {
+                                 List<VideoObject> objects) {
             super(context, layoutResourceId, objects);
-            viList = (ArrayList<VideoItem>)objects;
+            viList = (ArrayList<VideoObject>)objects;
             vView = layoutResourceId;
         }
 
@@ -143,17 +144,17 @@ public class MainActivity extends ActionBarActivity {
             LayoutInflater li = (LayoutInflater)getSystemService
                     (Context.LAYOUT_INFLATER_SERVICE);
             View v  = li.inflate(vView, parent, false);
-            VideoItem vi = viList.get(position);
+            VideoObject vi = viList.get(position);
             ImageView imageView = (ImageView) v.findViewById(R.id.iv_icon);
             TextView mTitle = (TextView)v.findViewById(R.id.tv_video_title);
             TextView mLength = (TextView)v.findViewById(R.id.tv_video_length);
 
-            imageView.setImageDrawable(vi.videoIconDrawable);
+            imageView.setImageDrawable(vi.iconDrawable);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             v.setId(position);
 
-            mTitle.setText(vi.videoTitle);
-            mLength.setText(vi.videoLength);
+            mTitle.setText(vi.title);
+            mLength.setText(vi.length);
 
             // check to see if the file is saved and hide the icon if not
             ImageView savedIcon = (ImageView) v.findViewById(R.id.iv_saved);

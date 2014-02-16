@@ -9,8 +9,10 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.bahaiexplorer.toservehumanity.model.ConfigObjects;
 import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.model.VideoItem;
+import com.bahaiexplorer.toservehumanity.model.VideoObject;
 import com.bahaiexplorer.toservehumanity.util.JsonUtils;
 
 import org.json.JSONObject;
@@ -23,15 +25,14 @@ import java.util.ArrayList;
 /**
  * Created by briankurzius on 2/8/14.
  */
-public class ToServeHumanityApplication extends Application {
+public class ToServeHumanityApplication extends Application implements JsonUtils.ConfigListener{
     final static String TAG = "ToServeHumanityApplication";
     final static String REMIND_CELLULAR_CONNECTION = "dont_remind_cellular_connection";
-    public ArrayList<VideoItem> mVideoList = new ArrayList<VideoItem>();
+    public ArrayList<VideoObject> mVideoObjList;
     public TypedArray videoIconDrawables;
     private SharedPreferences prefs;
     private JSONObject jsonObj;
 
-    private String configURL = "http://bahaiexplorer.com/toservehumanity/config.json";
 
     @Override
     public void onCreate() {
@@ -42,7 +43,7 @@ public class ToServeHumanityApplication extends Application {
 
     // build the videoArray so we don;t have to do it more than once
     private void buildVideoArray(){
-        mVideoList = new ArrayList<VideoItem>();
+        mVideoObjList = new ArrayList<VideoObject>();
         videoIconDrawables = getResources().obtainTypedArray(R.array.video_icon_array);
 
         String[] videoTitleArray = getResources().getStringArray(R.array.video_title_array);
@@ -55,26 +56,30 @@ public class ToServeHumanityApplication extends Application {
             String videoID = videoIDArray[i];
             String videoFileName = videoFileNameArray[i];
             //String videoIconDrawable = videoIconDrawableArray[i];
-            VideoItem vi = new VideoItem();
-            vi.videoTitle = videoTitle;
-            vi.videoID = videoID;
-            vi.videoFileName = videoFileName;
-            vi.videoLanguage = VideoItem.VIDEO_LANGUAGE_ENGLISH;
-            vi.videoIconDrawable = (Drawable) videoIconDrawables.getDrawable(i);
-            vi.videoLength = "60min";
-            String filePath = vi.videoFileName + "_" +  vi.videoLanguage + "_" + Constants.VIDEO_SIZE  + Constants.VIDEO_SUFFIX;
+            VideoObject vo = new VideoObject();
+            vo.title = videoTitle;
+            vo.id = videoID;
+            vo.fileName = videoFileName;
+            vo.language = VideoItem.VIDEO_LANGUAGE_ENGLISH;
+            vo.iconDrawable = (Drawable) videoIconDrawables.getDrawable(i);
+            // TODO - set the proper length
+            vo.length = "60min";
+            // TODO - set te file path properly
+            String filePath = vo.fileName + "_en_standard.mp4";
             boolean isFileSaved = isVideoFileSaved(getApplicationContext(),filePath);
-            vi.isSaved = isFileSaved;
-            mVideoList.add(vi);
+            vo.isSaved = isFileSaved;
+            mVideoObjList.add(vo);
         }
         videoIconDrawables.recycle();
 
         JsonUtils jsonUtils = new JsonUtils();
-        jsonUtils.getJSONfromURL(configURL);
+        jsonUtils.getJSONfromURL(Constants.CONFIG_URL, this);
     }
 
-    public ArrayList<VideoItem> getVideoList(){
-        return mVideoList;
+
+
+    public ArrayList<VideoObject> getVideoList(){
+        return mVideoObjList;
     }
 
     static public boolean isVideoFileSaved(final Context context, String fileName){
@@ -152,6 +157,39 @@ public class ToServeHumanityApplication extends Application {
     public boolean remindOnCellularConnection(){
         //set a preference not to remind on this version
        return prefs.getBoolean(REMIND_CELLULAR_CONNECTION, true);
+    }
+
+    // the callback when the config is loaded
+    public void configLoaded(ConfigObjects config){
+        ArrayList<VideoObject> videos = null;
+        // TODO load the first one by default - but later get them by language
+        Log.d(TAG,"config:  " + config );
+        if(config!=null){
+            ArrayList<ConfigObjects.ConfigObject> configObjects = config.configObjects;
+            Log.d(TAG,"configObjects:" + configObjects.size());
+            if(configObjects!=null){
+                ConfigObjects.ConfigObject co = configObjects.get(0);
+                Log.d(TAG,"configObject:" + co);
+                if(co!=null){
+                     videos = co.videos;
+                    Log.d(TAG,"videos:  " + videos );
+                }
+            }
+            if(videos!=null){
+                mVideoObjList = videos;
+            }
+
+            videoIconDrawables = getResources().obtainTypedArray(R.array.video_icon_array);
+            for(int i=0; i<mVideoObjList.size(); i++){
+                try{
+                    VideoObject vo = mVideoObjList.get(i);
+                    vo.iconDrawable = (Drawable) videoIconDrawables.getDrawable(i);
+                }catch(Error e){
+                   Log.e(TAG,"mission control issue");
+                }
+            }
+        }
+
     }
 
 }
