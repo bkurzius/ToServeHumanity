@@ -14,18 +14,26 @@
     <string name="language_id_farsi">fa</string>
     <string name="language_name_arabic">عربي</string>
     <string name="language_id_arabic">ar</string>
+
+
     <string name="action_language">Language</string>
     <string name="action_about">About</string>
     <string name="action_terms">Terms of use</string>
     <string name="action_settings">Settings</string>
     <string name="action_save">Save</string>
     <string name="action_share">Share</string>
+    <string name="action_gotowebsite">Go to website</string>
     <string name="action_download_and_share">Download and Share videos</string>
+
+
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="alert_need_to_save">You will need to save the video before playing it. Press the
         save button above and
         wait until it has fully downloaded.</string>
+
+
+
     <string name="title_select_language">Select Language</string>
     <string name="title_already_downloaded">Video is already saved.</string>
     <string name="title_video_file_deleted">Video has been deleted.</string>

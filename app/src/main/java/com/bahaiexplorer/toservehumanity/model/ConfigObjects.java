@@ -29,6 +29,8 @@ public class ConfigObjects {
 
         public class Strings{
             @Expose
+            public String titleGoToWebsite;
+            @Expose
             public String titleSave;
             @Expose
             public String titleSaved;

@@ -1,12 +1,14 @@
 package com.bahaiexplorer.toservehumanity.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.bahaiexplorer.toservehumanity.R;
+import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
 
 public class BaseActivity extends ActionBarActivity {
     private static final String TAG = "BaseActivity";
@@ -29,8 +31,12 @@ public class BaseActivity extends ActionBarActivity {
             showAbout();
             return true;
         }
-        if (id == R.id.action_terms_of_use) {
+        else if (id == R.id.action_terms_of_use) {
             showTerms();
+            return true;
+        }
+        else if (id == R.id.action_gotowebsite) {
+            gotoWebsite();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -44,6 +50,13 @@ public class BaseActivity extends ActionBarActivity {
     public void showTerms(){
        Intent intent = new Intent(this,TermsActivity.class);
        startActivity(intent);
+    }
+
+    public void gotoWebsite(){
+        final ToServeHumanityApplication mApp = (ToServeHumanityApplication)getApplication();
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(mApp.currLanguageConfig.website) );
+        startActivity(intent);
     }
 
 
