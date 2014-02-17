@@ -24,6 +24,8 @@ public class AboutActivity extends BaseActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        getSupportActionBar().setTitle(((ToServeHumanityApplication)getApplication()).getStrings()
+                .titleAbout);
     }
 
 
