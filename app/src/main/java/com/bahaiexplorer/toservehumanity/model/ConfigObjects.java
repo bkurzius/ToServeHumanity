@@ -21,6 +21,8 @@ public class ConfigObjects {
         @Expose
         public String facebookPage;
         @Expose
+        public String appLink;
+        @Expose
         public Strings strings;
         @Expose
         public ArrayList<VideoObject> videos;
@@ -32,6 +34,10 @@ public class ConfigObjects {
             public String titleSaved;
             @Expose
             public String titleShare;
+            @Expose
+            public String titleShareSubject;
+            @Expose
+            public String textShareBody;
             @Expose
             public String titleTerms;
             @Expose

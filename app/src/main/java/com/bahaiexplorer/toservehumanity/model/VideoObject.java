@@ -17,6 +17,8 @@ public class VideoObject {
     @Expose
     public String streamingURL = "";
     @Expose
+    public String shareURL = "";
+    @Expose
     public String downloadURL = "";
     @Expose
     public String downloadPath = "";

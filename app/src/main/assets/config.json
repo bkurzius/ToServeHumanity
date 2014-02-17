@@ -6,30 +6,38 @@
     "projectName":"To Serve Humanity",
     "language":"en",
     "website":"http://www.bahai.org/toserve",
-    "facebookPage":"",
+    "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
+	"appLink":"http://play.google.com",
     "strings":{
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"Share",
+		"titleShareSubject":"Found a great video on service",
+		"textShareBody": "Check out this video I found: %1s \n\n To view the video: %2s \n\n To download the Android app go here: %3s",
         "titleTerms":"Terms of use",
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
-        "textTerms":"Terms of Use",
+		"titleFacebookLink":"Join the conversation on Facebook",
+        "textTerms":"© Bahá’í World Centre, 2014\n
+Subject to the following restrictions these films may be freely reproduced in whole or in part without the need to obtain special permission:\n
+1. The Bahá’í World Centre retains full copyright protection for this film;\n
+2. You acquire no rights to or license over the content other than the limited right to use the film in accordance with these terms;\n
+3. You may reproduce, copy, distribute, publish, or display the film in whole or in part for any non-commercial use [for Bahá’í communities only], but you cannot modify, edit, create derivative works from it or use it in any manner inconsistent with its original intent;\n
+4. This copyright notice must always be attached to any reproduction of this work",
 
-        "textIntro":"In February 2013, the Universal House of Justice announced a series of youth
-         conferences to be held around the world. Thousands of young people from villages and
-         neighbourhoods spanning every continent gathered to consult on the ways in which their
-         generation can contribute to the spiritual and material well-being of their communities.\n \nThis series of short films captures the insights and conversation among participants as they explore some of the themes that are central to the process of community building. The words of ‘Abdu’l-Bahá, “God is the helper of those souls whose aim is to serve humanity and whose efforts and endeavours are devoted to the good and betterment of all mankind”, inspire the hearts of many youth, who are collectively striving to translate their aspirations into reality.",
+        "textIntro":"In February 2013, the Universal House of Justice announced a series of youth conferences to be held around the world. Thousands of young people from villages and neighbourhoods spanning every continent gathered to consult on the ways in which thei generation can contribute to the spiritual and material well-being of their communities.\n \nThis series of short films captures the insights and conversation among participants as they explore some of the themes that are central to the process of community building. The words of ‘Abdu’l-Bahá, “God is the helper of those souls whose aim is to serve humanity and whose efforts and endeavours are devoted to the good and betterment of all mankind”, inspire the hearts of many youth, who are collectively striving to translate their aspirations into reality.",
+
          "alertCellularData":"You are currently using cellular data and may incur costs from your carrier to view these videos. You can also save them over Wifi so they can be seen without an internet connection."
 
     },
     "videos":[
         {
-           "title":"Introduction - new",
+           "title":"Introduction-new",
            "id":"85625600",
            "fileName":"introduction",
            "streamingURL":"http://player.vimeo.com/video/85625600",
+		   "shareURL":"http://www.bahai.org/toserve/",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"introduction_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/introduction_en_standard.mp4",
@@ -41,6 +49,7 @@
            "id":"85618298",
            "fileName":"contributing_to_the_betterment_of_society",
            "streamingURL":"http://player.vimeo.com/video/85618298",
+		   "shareURL":"http://www.bahai.org/toserve/contributing-to-the-betterment-of-society.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"contributing_to_the_betterment_of_society_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/contributing_to_the_betterment_of_society_en_standard.mp4",
@@ -53,6 +62,7 @@
            "id":"85626038",
            "fileName":"twofold_moral_purpose",
            "streamingURL":"http://player.vimeo.com/video/85626038",
+		   "shareURL":"http://www.bahai.org/toserve/twofold-moral-purpose.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"twofold_moral_purpose_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/twofold_moral_purpose_en_standard.mp4",
@@ -64,6 +74,7 @@
            "id":"85618570",
            "fileName":"early_adolescence",
            "streamingURL":"http://player.vimeo.com/video/85618570",
+		   "shareURL":"http://www.bahai.org/toserve/early-adolescence.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"early_adolescence_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/early_adolescence_en_standard.mp4",
@@ -75,6 +86,7 @@
            "id":"85618912",
            "fileName":"selfless_service",
            "streamingURL":"http://player.vimeo.com/video/85618912",
+		   "shareURL":"http://www.bahai.org/toserve/selfless-service.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"selfless_service_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/selfless_service_en_standard.mp4",
@@ -86,6 +98,7 @@
            "id":"85619318",
            "fileName":"friendship_and_mutual_support",
            "streamingURL":"http://player.vimeo.com/video/85619318",
+		   "shareURL":"http://www.bahai.org/toserve/friendship-and-mutual-support.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"friendship_and_mutual_support_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/friendship_and_mutual_support_en_standard.mp4",
@@ -97,6 +110,7 @@
            "id":"85618565",
            "fileName":"coherence",
            "streamingURL":"http://player.vimeo.com/video/85618565",
+		   "shareURL":"http://www.bahai.org/toserve/coherence.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"coherence_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/coherence_en_standard.mp4",
@@ -108,6 +122,7 @@
            "id":"85618909",
            "fileName":"youth_and_community_building",
            "streamingURL":"http://player.vimeo.com/video/85618909",
+		   "shareURL":"http://www.bahai.org/toserve/youth-and-community-building.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"youth_and_community_building_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/youth_and_community_building_en_standard.mp4",
@@ -119,6 +134,7 @@
            "id":"85619227",
            "fileName":"qualities_for_collective_action",
            "streamingURL":"http://player.vimeo.com/video/85619227",
+		   "shareURL":"http://www.bahai.org/toserve/qualities-for-collective-action.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"qualities_for_collective_action_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/qualities_for_collective_action_en_standard.mp4",
@@ -130,6 +146,7 @@
            "id":"85619428",
            "fileName":"building_a_new_civilization",
            "streamingURL":"http://player.vimeo.com/video/85619428",
+		   "shareURL":"http://www.bahai.org/toserve/building-a-new-civilization.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"building_a_new_civilization_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/building_a_new_civilization_en_standard.mp4",
@@ -141,6 +158,7 @@
            "id":"85630367",
            "fileName":"responding_to_the_call",
            "streamingURL":"http://player.vimeo.com/video/85630367",
+		   "shareURL":"http://www.bahai.org/toserve/responding-to-the-call.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"responding_to_the_call_en_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/responding_to_the_call_en_standard.mp4",
@@ -155,16 +173,25 @@
     "projectName":"Servir a la Humanidad",
     "language":"es",
     "website":"http://www.bahai.org/toserve/es",
-    "facebookPage":"",
+    "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
+	"appLink":"http://play.google.com",
     "strings":{
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"Compartir",
+		"titleShareSubject":"Found a great video on service",
+		"textShareBody": "Check out this video I found: %1s \n\n To view the video: %2s \n\n To download the Android app go here: %3s",
         "titleTerms":"Condiciones de uso.",
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
-        "textTerms":"Terms of Use",
+		"titleFacebookLink":"",
+        "textTerms":"© Bahá’í World Centre, 2014\n
+		Esta película se puede reproducir libremente, en su totalidad o en parte, sin necesidad de obtener permiso especial, sujeto a las limitaciones señaladas a continuación:\n
+1. el Centro Mundial Bahá’í retiene todos los derechos de autor de esta película;\n
+2. el usuario no obtiene otro derecho ni licencia sobre el contenido de esta película más que el de usarla conforme a las condiciones aquí establecidas;\n
+3. el usuario puede, para fines no comerciales (de comunidades Bahá’ís únicamente), reproducir, copiar, distribuir, publicar y exhibir esta película, en su totalidad o en parte; sin embargo, el usuario no puede modificar, editar, crear obras derivadas o usar esta película en cualquier forma que discrepe con su propósito original;\n
+4. este aviso de derechos de autor debe ser incluido en cualquier clase de reproducción de esta obra.",
 
         "textIntro":"En febrero de 2013, la Casa Universal de Justicia anunció una serie de conferencias de juventud que tendrían lugar alrededor del mundo. Miles de jóvenes procedentes de aldeas y barrios que abarcan todos los continentes se reunieron para consultar sobre la forma en que su generación puede contribuir al bienestar espiritual y material de sus comunidades.\n\nEsta serie de vídeos cortos captura las ideas y conversaciones entre participantes mientras exploran algunos de los temas que son centrales en el proceso de construcción de comunidad. Las palabras de ‘Abdu’l-Bahá, “Dios es el asistente de aquellas almas cuya meta es servir a la humanidad y cuyos esfuerzos y empeños están dedicados al bien y al mejoramiento de toda la raza humana”, inspiran los corazones de muchos jóvenes, quienes colectivamente se esfuerzan por traducir sus aspiraciones en realidad.",
 
@@ -177,6 +204,7 @@
            "id":"85758962",
            "fileName":"introduction",
            "streamingURL":"http://player.vimeo.com/video/85758962",
+		   "shareURL":"http://www.bahai.org/toserve/es/",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"introduction_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/introduction_es_standard.mp4",
@@ -188,6 +216,7 @@
            "id":"85758963",
            "fileName":"contributing_to_the_betterment_of_society",
            "streamingURL":"http://player.vimeo.com/video/85758963",
+		   "shareURL":"http://www.bahai.org/toserve/es/contributing-to-the-betterment-of-society.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"contributing_to_the_betterment_of_society_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/contributing_to_the_betterment_of_society_es_standard.mp4",
@@ -200,6 +229,7 @@
            "id":"85759353",
            "fileName":"twofold_moral_purpose",
            "streamingURL":"http://player.vimeo.com/video/85759353",
+		   "shareURL":"http://www.bahai.org/toserve/es/twofold-moral-purpose.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"twofold_moral_purpose_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/twofold_moral_purpose_es_standard.mp4",
@@ -211,6 +241,7 @@
            "id":"85759354",
            "fileName":"early_adolescence",
            "streamingURL":"http://player.vimeo.com/video/85759354",
+		   "shareURL":"http://www.bahai.org/toserve/es/early-adolescence.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"early_adolescence_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/early_adolescence_es_standard.mp4",
@@ -223,6 +254,7 @@
            "fileName":"selfless_service",
            "streamingURL":"http://player.vimeo.com/video/85759358",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
+		   "shareURL":"http://www.bahai.org/toserve/es/selfless-service.html";
 		   "downloadFileName":"selfless_service_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/selfless_service_es_standard.mp4",
            "length": "00:04:32",
@@ -233,6 +265,7 @@
            "id":"85759360",
            "fileName":"friendship_and_mutual_support",
            "streamingURL":"http://player.vimeo.com/video/85759360",
+		   "shareURL":"http://www.bahai.org/toserve/es/friendship-and-mutual-support.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"friendship_and_mutual_support_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/friendship_and_mutual_support_es_standard.mp4",
@@ -244,6 +277,7 @@
            "id":"85784781",
            "fileName":"coherence",
            "streamingURL":"http://player.vimeo.com/video/85784781",
+		   "shareURL":"http://www.bahai.org/toserve/es/coherence.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"coherence_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/coherence_es_standard.mp4",
@@ -255,6 +289,7 @@
            "id":"85817151",
            "fileName":"youth_and_community_building",
            "streamingURL":"http://player.vimeo.com/video/85817151",
+		   "shareURL":"http://www.bahai.org/toserve/es/youth-and-community-building.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"youth_and_community_building_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/youth_and_community_building_es_standard.mp4",
@@ -266,6 +301,7 @@
            "id":"85817152",
            "fileName":"qualities_for_collective_action",
            "streamingURL":"http://player.vimeo.com/video/85817152",
+		   "shareURL":"http://www.bahai.org/toserve/es/qualities-for-collective-action.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"qualities_for_collective_action_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/qualities_for_collective_action_es_standard.mp4",
@@ -277,6 +313,7 @@
            "id":"85760379",
            "fileName":"building_a_new_civilization",
            "streamingURL":"http://player.vimeo.com/video/85760379",
+		   "shareURL":"http://www.bahai.org/toserve/es/building-a-new-civilization.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"building_a_new_civilization_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/building_a_new_civilization_es_standard.mp4",
@@ -288,6 +325,7 @@
            "id":"85849188",
            "fileName":"responding_to_the_call",
            "streamingURL":"http://player.vimeo.com/video/85849188",
+		   "shareURL":"http://www.bahai.org/toserve/es/responding-to-the-call.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"responding_to_the_call_es_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/responding_to_the_call_es_standard.mp4",
@@ -301,16 +339,25 @@
     "projectName":"Servir l'humanité",
     "language":"fr",
     "website":"http://www.bahai.org/toserve/fr",
-    "facebookPage":"",
+    "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
+	"appLink":"http://play.google.com",
     "strings":{
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"Partager",
+		"titleShareSubject":"Found a great video on service",
+		"textShareBody": "Check out this video I found: %1s \n\n To view the video: %2s \n\n To download the Android app go here: %3s",
         "titleTerms":"conditions d’utilisation",
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
-        "textTerms":"Terms of Use",
+		"titleFacebookLink":"",
+        "textTerms": '© Bahá’í World Centre, 2014\n
+		Sous réserve des restrictions suivantes, ce film peut être reproduit librement dans son intégralité ou en partie, sans qu’il soit nécessaire d’obtenir une permission spéciale :\n
+1. Le Centre mondial bahá’í détient le droit d’auteur intégral pour ce film ;\n
+2. Vous n’acquérez ni droits ni licence sur le contenu, à l’exception du droit restreint d’utiliser le film selon ces conditions ;\n
+3. Vous êtes autorisé à reproduire, copier, distribuer et projeter ce film dans son intégralité ou en partie pour toute utilisation non commerciale [uniquement pour les communautés bahá’íes], mais vous ne pouvez ni le modifier, ni l’éditer, ni créer de produits dérivés, ni l’utiliser de toute manière qui aille à l’encontre de son intention originale ;\n
+4. Cet avis de droit d’auteur doit toujours être joint à toute reproduction de cette œuvre.',
 
         "textIntro":"En février 2013, la Maison universelle de justice a annoncé la tenue d’une série de conférences des jeunes partout dans le monde. Des milliers de jeunes venant de villages et de quartiers de tous les continents se sont réunis pour consulter sur les moyens, pour leur génération, de contribuer au bien-être matériel et spirituel de leurs communautés.\n\nCette série de courts métrages reflète les idées exprimées par les participants et les conversations qu’ils ont engagées alors qu’ils exploraient certains des thèmes qui sont au centre du processus de construction communautaire. Ces paroles de ‘Abdu’l-Bahá, «  Dieu soutient les âmes dont le but est de servir l’humanité et qui consacrent leurs efforts et leurs actions au bien et à l’amélioration du sort de toute l’humanité », inspirent le cœur de nombreux jeunes qui s’efforcent collectivement de traduire leurs aspirations dans les faits.",
 
@@ -323,6 +370,7 @@
            "id":"85660600",
            "fileName":"introduction",
            "streamingURL":"http://player.vimeo.com/video/85660600",
+		   "shareURL":"http://www.bahai.org/toserve/fr/",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"introduction_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/introduction_fr_standard.mp4",
@@ -334,6 +382,7 @@
            "id":"85655554",
            "fileName":"contributing_to_the_betterment_of_society",
            "streamingURL":"http://player.vimeo.com/video/85655554",
+		   "shareURL":"http://www.bahai.org/toserve/fr/contributing-to-the-betterment-of-society.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"contributing_to_the_betterment_of_society_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/contributing_to_the_betterment_of_society_fr_standard.mp4",
@@ -346,6 +395,7 @@
            "id":"85655592",
            "fileName":"twofold_moral_purpose",
            "streamingURL":"http://player.vimeo.com/video/85655592",
+		   "shareURL":"http://www.bahai.org/toserve/fr/twofold-moral-purpose.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"twofold_moral_purpose_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/twofold_moral_purpose_fr_standard.mp4",
@@ -357,6 +407,7 @@
            "id":"85655662",
            "fileName":"early_adolescence",
            "streamingURL":"http://player.vimeo.com/video/85655662",
+		   "shareURL":"http://www.bahai.org/toserve/fr/early-adolescence.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"early_adolescence_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/early_adolescence_fr_standard.mp4",
@@ -368,6 +419,7 @@
            "id":"85655719",
            "fileName":"selfless_service",
            "streamingURL":"http://player.vimeo.com/video/85655719",
+		   "shareURL":"http://www.bahai.org/toserve/fr/selfless-service.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"selfless_service_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/selfless_service_fr_standard.mp4",
@@ -379,6 +431,7 @@
            "id":"85655855",
            "fileName":"friendship_and_mutual_support",
            "streamingURL":"http://player.vimeo.com/video/85655855",
+		   "shareURL":"http://www.bahai.org/toserve/fr/friendship-and-mutual-support.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"friendship_and_mutual_support_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/friendship_and_mutual_support_fr_standard.mp4",
@@ -390,6 +443,7 @@
            "id":"85720007",
            "fileName":"coherence",
            "streamingURL":"http://player.vimeo.com/video/85720007",
+		   "shareURL":"http://www.bahai.org/toserve/fr/coherence.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"coherence_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/coherence_fr_standard.mp4",
@@ -401,6 +455,7 @@
            "id":"85656089",
            "fileName":"youth_and_community_building",
            "streamingURL":"http://player.vimeo.com/video/85656089",
+		   "shareURL":"http://www.bahai.org/toserve/fr/youth-and-community-building.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"youth_and_community_building_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/youth_and_community_building_fr_standard.mp4",
@@ -412,6 +467,7 @@
            "id":"85720323",
            "fileName":"qualities_for_collective_action",
            "streamingURL":"http://player.vimeo.com/video/85720323",
+		   "shareURL":"http://www.bahai.org/toserve/fr/qualities-for-collective-action.html";
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"qualities_for_collective_action_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/qualities_for_collective_action_fr_standard.mp4",
@@ -423,6 +479,7 @@
            "id":"85658092",
            "fileName":"building_a_new_civilization",
            "streamingURL":"http://player.vimeo.com/video/85658092",
+		   "shareURL":"http://www.bahai.org/toserve/fr/building-a-new-civilization.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"building_a_new_civilization_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/building_a_new_civilization_fr_standard.mp4",
@@ -434,6 +491,7 @@
            "id":"85798501",
            "fileName":"responding_to_the_call",
            "streamingURL":"http://player.vimeo.com/video/85798501",
+		   "shareURL":"http://www.bahai.org/toserve/fr/responding-to-the-call.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"responding_to_the_call_fr_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/responding_to_the_call_fr_standard.mp4",
@@ -447,16 +505,29 @@
     "projectName":"Служить человечеству",
     "language":"ru",
     "website":"http://www.bahai.org/toserve/ru",
-    "facebookPage":"",
+    "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
+	"appLink":"http://play.google.com",
     "strings":{
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"Поделиться",
+		"titleShareSubject":"Found a great video on service",
+		"textShareBody": "Check out this video I found: %1s \n\n To view the video: %2s \n\n To download the Android app go here: %3s",
         "titleTerms":"Условиями Использования",
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
-        "textTerms":"Terms of Use",
+		"titleFacebookLink":"",
+        "textTerms": '© Bahá’í World Centre, 2014\n
+		Этот фильм можно свободно воспроизводить, полностью или частично, без дополнительного разрешения с учетом следующих ограничений:\n
+
+1. Всемирный Центр Бахаи в полном объеме сохраняет за собой авторские и смежные права на этот фильм;\n
+
+2. Вы не получаете прав или лицензию на использование произведения, кроме ограниченного права использовать фильм в соответствии с настоящими условиями;\n
+
+3. Вы можете воспроизводить, копировать, распространять, публиковать или демонстрировать этот фильм, полностью или частично, в любых некоммерческих целях [только для общин бахаи], но не допускается вносить в него изменения, дополнения, искажения, создавать на его основе иные произведения или использовать его любым способом, несогласующимся с его первоначальным предназначением;\n
+
+4. Это оповещение об авторских правах должно всегда указываться при любом воспроизведении данного фильма.',
 
         "textIntro":"В феврале 2013 года Всемирный Дом Справедливости объявил о проведении серии молодежных конференций по всему миру. Тысячи молодых людей из сел и городов, охватывающие каждый континент, собрались вместе, чтобы обсудить то, каким образом их поколение может внести свой вклад в достижение духовного и материального благополучия их общин.\n\nЭта серия короткометражных фильмов освещает тот разговор, который проходит между участниками, и те идеи, которыми они озарились в ходе своих размышлений над некоторыми темами, играющими ключевую роль в процессе построения общины. Следующие слова Абдул-Баха вдохновляют сердца многих молодых людей, которые  сообща стремятся реализовать свои устремления в действии: “Господь - помощник тем душам, чья цель - служить человечеству, и чьи усилия и устремления посвящены добру и достижению благополучия для всего человечества”.",
 
@@ -469,6 +540,7 @@
            "id":"85753841",
            "fileName":"introduction",
            "streamingURL":"http://player.vimeo.com/video/85753841",
+		   "shareURL":"http://www.bahai.org/toserve/ru/",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"introduction_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/introduction_ru_standard.mp4",
@@ -480,6 +552,7 @@
            "id":"86603221",
            "fileName":"contributing_to_the_betterment_of_society",
            "streamingURL":"http://player.vimeo.com/video/86603221",
+		   "shareURL":"http://www.bahai.org/toserve/ru/contributing-to-the-betterment-of-society.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"contributing_to_the_betterment_of_society_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/contributing_to_the_betterment_of_society_ru_standard.mp4",
@@ -492,6 +565,7 @@
            "id":"85753846",
            "fileName":"twofold_moral_purpose",
            "streamingURL":"http://player.vimeo.com/video/85753846",
+		   "shareURL":"http://www.bahai.org/toserve/ru/twofold-moral-purpose.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"twofold_moral_purpose_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/twofold_moral_purpose_ru_standard.mp4",
@@ -503,6 +577,7 @@
            "id":"85758639",
            "fileName":"early_adolescence",
            "streamingURL":"http://player.vimeo.com/video/85758639",
+		   "shareURL":"http://www.bahai.org/toserve/ru/early-adolescence.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"early_adolescence_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/early_adolescence_ru_standard.mp4",
@@ -514,6 +589,7 @@
            "id":"85758641",
            "fileName":"selfless_service",
            "streamingURL":"http://player.vimeo.com/video/85758641",
+		   "shareURL":"http://www.bahai.org/toserve/ru/selfless-service.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"selfless_service_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/selfless_service_ru_standard.mp4",
@@ -525,6 +601,7 @@
            "id":"85758642",
            "fileName":"friendship_and_mutual_support",
            "streamingURL":"http://player.vimeo.com/video/85758642",
+		   "shareURL":"http://www.bahai.org/toserve/ru/friendship-and-mutual-support.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"friendship_and_mutual_support_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/friendship_and_mutual_support_ru_standard.mp4",
@@ -536,6 +613,7 @@
            "id":"85758643",
            "fileName":"coherence",
            "streamingURL":"http://player.vimeo.com/video/85758643",
+		   "shareURL":"http://www.bahai.org/toserve/ru/coherence.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"coherence_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/coherence_ru_standard.mp4",
@@ -547,6 +625,7 @@
            "id":"85818696",
            "fileName":"youth_and_community_building",
            "streamingURL":"http://player.vimeo.com/video/85818696",
+		   "shareURL":"http://www.bahai.org/toserve/ru/youth-and-community-building.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"youth_and_community_building_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/youth_and_community_building_ru_standard.mp4",
@@ -558,6 +637,7 @@
            "id":"85758968",
            "fileName":"qualities_for_collective_action",
            "streamingURL":"http://player.vimeo.com/video/85758968",
+		   "shareURL":"http://www.bahai.org/toserve/ru/qualities-for-collective-action.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"qualities_for_collective_action_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/qualities_for_collective_action_ru_standard.mp4",
@@ -569,6 +649,7 @@
            "id":"85758969",
            "fileName":"building_a_new_civilization",
            "streamingURL":"http://player.vimeo.com/video/85758969",
+		   "shareURL":"http://www.bahai.org/toserve/ru/building-a-new-civilization.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"building_a_new_civilization_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/building_a_new_civilization_ru_standard.mp4",
@@ -580,6 +661,7 @@
            "id":"85849189",
            "fileName":"responding_to_the_call",
            "streamingURL":"http://player.vimeo.com/video/85849189",
+		   "shareURL":"http://www.bahai.org/toserve/ru/responding-to-the-call.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"responding_to_the_call_ru_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/responding_to_the_call_ru_standard.mp4",
@@ -593,18 +675,30 @@
     "projectName":"خدمت به نوع بشر",
     "language":"fa",
     "website":"http://www.bahai.org/toserve/fa",
-    "facebookPage":"",
+    "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
+	"appLink":"http://play.google.com",
     "strings":{
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"به اشتراک بگذارید",
+		"titleShareSubject":"Found a great video on service",
+		"textShareBody": "Check out this video I found: %1s \n\n To view the video: %2s \n\n To download the Android app go here: %3s",
         "titleTerms":"",
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
-        "textTerms":"Terms of Use",
+		"titleFacebookLink":"",
+        "textTerms":'© Bahá’í World Centre, 2014\n\nبا رعایت حدود زیر، کل یا بخشی از این فیلم را می¬توان آزادانه و بدون نیاز به کسب اجازۀ خاص تکثیر کرد:
 
-        "textIntro":"",
+\nمرکز جهانی بهائی حق نشر کامل این فیلم را برای خود محفوظ می¬دارد؛
+
+\nبر طبق این شرایط شما به جز حق محدود برای استفاده از فیلم بر اساس این شرایط، هیچ حق یا مجوزی بر محتوا پيدا نمی‌کنيد؛
+
+\nشما می¬توانید برای هر استفادۀ غیرتجاری [صرفاً برای جوامع بهائی]، کل یا بخشی از فیلم را تکثیر، نسخه¬برداری، توزیع یا منتشر کنید یا آن را به نمایش گذارید، امّا حقّ تغییر، ویرایش، اقتباس از آن برای ساختن فیلم‌های دیگر، و یا استفاده از آن به هر شیوه‌ای که با منظور اصلی فیلم ناسازگار باشد را ندارید؛
+
+این اعلامیّۀ حق مؤلف باید همیشه به هر نسخۀ تکثیر شده از این اثر پیوست شود.',
+
+        "textIntro":"در فوريه ۲۰۱۳ بيت‌العدل اعظم برپائی مجموعه‌ای از کنفرانس‌های جوانان در اطراف جهان را اعلام کرد. هزاران جوان از روستاها و محلات مختلف در پنج قارۂ جهان گرد هم آمدند تا برای يافتن شيوه‌هائی که نسل آنها بتواند به بهسازی روحانی و جسمانی جوامع‌شان کمک کند، مشورت کنند.",
 
          "alertCellularData":"You are currently using cellular data and may incur costs from your carrier to view these videos. You can also save them over Wifi so they can be seen without an internet connection."
 
@@ -615,6 +709,7 @@
            "id":"85798250",
            "fileName":"introduction",
            "streamingURL":"http://player.vimeo.com/video/85798250",
+		   "shareURL":"http://www.bahai.org/toserve/fa/",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"introduction_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/introduction_fa_standard.mp4",
@@ -626,6 +721,7 @@
            "id":"85798249",
            "fileName":"contributing_to_the_betterment_of_society",
            "streamingURL":"http://player.vimeo.com/video/85798249",
+		   "shareURL":"http://www.bahai.org/toserve/fa/contributing-to-the-betterment-of-society.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"contributing_to_the_betterment_of_society_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/contributing_to_the_betterment_of_society_fa_standard.mp4",
@@ -639,6 +735,7 @@
            "fileName":"twofold_moral_purpose",
            "streamingURL":"http://player.vimeo.com/video/85783691",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
+		   "shareURL":"http://www.bahai.org/toserve/fa/twofold-moral-purpose.html",
 		   "downloadFileName":"twofold_moral_purpose_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/twofold_moral_purpose_fa_standard.mp4",
            "length": "00:05:23",
@@ -649,6 +746,7 @@
            "id":"85783816",
            "fileName":"early_adolescence",
            "streamingURL":"http://player.vimeo.com/video/85783816",
+		   "shareURL":"http://www.bahai.org/toserve/fa/early-adolescence.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"early_adolescence_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/early_adolescence_fa_standard.mp4",
@@ -660,6 +758,7 @@
            "id":"85783815",
            "fileName":"selfless_service",
            "streamingURL":"http://player.vimeo.com/video/85783815",
+		   "shareURL":"http://www.bahai.org/toserve/fa/selfless-service.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"selfless_service_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/selfless_service_fa_standard.mp4",
@@ -671,6 +770,7 @@
            "id":"85817623",
            "fileName":"friendship_and_mutual_support",
            "streamingURL":"http://player.vimeo.com/video/85817623",
+		   "shareURL":"http://www.bahai.org/toserve/fa/friendship-and-mutual-support.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"friendship_and_mutual_support_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/friendship_and_mutual_support_fa_standard.mp4",
@@ -682,6 +782,7 @@
            "id":"85783886",
            "fileName":"coherence",
            "streamingURL":"http://player.vimeo.com/video/85783886",
+		   "shareURL":"http://www.bahai.org/toserve/fa/coherence.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"coherence_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/coherence_fa_standard.mp4",
@@ -693,6 +794,7 @@
            "id":"85783889",
            "fileName":"youth_and_community_building",
            "streamingURL":"http://player.vimeo.com/video/85783889",
+		   "shareURL":"http://www.bahai.org/toserve/fa/youth-and-community-building.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"youth_and_community_building_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/youth_and_community_building_fa_standard.mp4",
@@ -704,6 +806,7 @@
            "id":"85818695",
            "fileName":"qualities_for_collective_action",
            "streamingURL":"http://player.vimeo.com/video/85818695",
+		   "shareURL":"http://www.bahai.org/toserve/fa/qualities-for-collective-action.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"qualities_for_collective_action_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/qualities_for_collective_action_fa_standard.mp4",
@@ -715,6 +818,7 @@
            "id":"85783895",
            "fileName":"building_a_new_civilization",
            "streamingURL":"http://player.vimeo.com/video/85783895",
+		   "shareURL":"http://www.bahai.org/toserve/fa/building-a-new-civilization.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"building_a_new_civilization_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/building_a_new_civilization_fa_standard.mp4",
@@ -726,6 +830,7 @@
            "id":"85882819",
            "fileName":"responding_to_the_call",
            "streamingURL":"http://player.vimeo.com/video/85882819",
+		   "shareURL":"http://www.bahai.org/toserve/fa/responding-to-the-call.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"responding_to_the_call_fa_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/responding_to_the_call_fa_standard.mp4",
@@ -739,18 +844,31 @@
     "projectName":"خدمة البشرية",
     "language":"ar",
     "website":"http://www.bahai.org/toserve/ar",
-    "facebookPage":"",
+    "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
+	"appLink":"http://play.google.com",
     "strings":{
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"المشاركة",
+		"titleShareSubject":"Found a great video on service",
+		"textShareBody": "Check out this video I found: %1s \n\n To view the video: %2s \n\n To download the Android app go here: %3s",
         "titleTerms":"Terms of use",
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
-        "textTerms":"Terms of Use",
+		"titleFacebookLink":"",
+        "textTerms":'© Bahá’í World Centre, 2014\n\n
+		\nشريطة الالتزام بالضوابط التالية، يمكن استنساخ هذا الفيلم كليا او جزئيا دون الحاجة إلى الحصول على إذن خاص:
 
-        "textIntro":"",
+\nيحتفظ المركز البهائي العالمي بالحماية الكاملة لحقوق ملكية هذا الفيلم؛
+
+\nلا تملك أي حق أو ترخيص عدا عن حق محدود لاستخدام محتوى هذا الفيلم وفقا لهذه الشروط؛
+
+\nيمكنك إعادة إنتاج، أو نسخ، أو توزيع، أو نشر، أو عرض الفيلم كليا أو جزئيا لأي استخدام غير تجاري [للجامعات البهائية فقط]، ولكن لا يمكنك تعديل أو تحرير أو استخدام أجزاء من الفيلم في إعداد أعمال أخرى أو استخدامه بأي طريقة لا تتفق وهدفه الأصلي؛
+
+يجب أن يرفق إشعار حق الملكية هذا مع أي إعادة إنتاج لهذا العمل.',
+
+        "textIntro":'في شباط/فبراير 2013، أعلن بيت العدل الأعظم عن عقد سلسلة مؤتمرات للشباب حول العالم. فقد اجتمع آلاف الشباب من القرى والأحياء من كل القارات للتشاور حول الطرق التي تمكن جيلهم من المساهمة في الرفاه الروحاني والمادي لجامعاتهم المحلية. \n\nهذه السلسلة من الأفلام القصيرة تصور رؤى المشاركين والأحاديث التي دارت بينهم خلال استكشافهم لبعض المواضيع التي تعتبر أساسية في عملية بناء الجامعة المحلية. إن كلمات حضرة عبد البهاء، والله معين لتلك النفوس الرامية إلى خدمة الإنسانية والذين يكرسون جهودهم ومساعيهم لخير كافة الجنس البشري وترقيه"، تُلهم قلوب العديد من الشباب، الذين يسعون بشكل جماعي إلى ترجمة تطلعاتهم إلى واقع ملموس.';
 
          "alertCellularData":"You are currently using cellular data and may incur costs from your carrier to view these videos. You can also save them over Wifi so they can be seen without an internet connection."
 
@@ -761,6 +879,7 @@
            "id":"86152977",
            "fileName":"introduction",
            "streamingURL":"http://player.vimeo.com/video/86152977",
+		   "shareURL":"http://www.bahai.org/toserve/ar/",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"introduction_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/introduction_ar_standard.mp4",
@@ -772,6 +891,7 @@
            "id":"85754121",
            "fileName":"contributing_to_the_betterment_of_society",
            "streamingURL":"http://player.vimeo.com/video/85754121",
+		   "shareURL":"http://www.bahai.org/toserve/ar/contributing-to-the-betterment-of-society.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"contributing_to_the_betterment_of_society_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/contributing_to_the_betterment_of_society_ar_standard.mp4",
@@ -784,6 +904,7 @@
            "id":"85753207",
            "fileName":"twofold_moral_purpose",
            "streamingURL":"http://player.vimeo.com/video/85753207",
+		   "shareURL":"http://www.bahai.org/toserve/ar/twofold-moral-purpose.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"twofold_moral_purpose_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/twofold_moral_purpose_ar_standard.mp4",
@@ -795,6 +916,7 @@
            "id":"85753585",
            "fileName":"early_adolescence",
            "streamingURL":"http://player.vimeo.com/video/85753585",
+		   "shareURL":"http://www.bahai.org/toserve/ar/early-adolescence.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"early_adolescence_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/early_adolescence_ar_standard.mp4",
@@ -806,6 +928,7 @@
            "id":"85753584",
            "fileName":"selfless_service",
            "streamingURL":"http://player.vimeo.com/video/85753584",
+		   "shareURL":"http://www.bahai.org/toserve/ar/selfless-service.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"selfless_service_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/selfless_service_ar_standard.mp4",
@@ -817,6 +940,7 @@
            "id":"85753586",
            "fileName":"friendship_and_mutual_support",
            "streamingURL":"http://player.vimeo.com/video/85753586",
+		   "shareURL":"http://www.bahai.org/toserve/ar/friendship-and-mutual-support.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"friendship_and_mutual_support_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/friendship_and_mutual_support_ar_standard.mp4",
@@ -828,6 +952,7 @@
            "id":"85753583",
            "fileName":"coherence",
            "streamingURL":"http://player.vimeo.com/video/85753583",
+		   "shareURL":"http://www.bahai.org/toserve/ar/coherence.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"coherence_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/coherence_ar_standard.mp4",
@@ -839,6 +964,7 @@
            "id":"85753847",
            "fileName":"youth_and_community_building",
            "streamingURL":"http://player.vimeo.com/video/85753847",
+		   "shareURL":"http://www.bahai.org/toserve/ar/youth-and-community-building.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"youth_and_community_building_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/youth_and_community_building_ar_standard.mp4",
@@ -850,6 +976,7 @@
            "id":"85753848",
            "fileName":"qualities_for_collective_action",
            "streamingURL":"http://player.vimeo.com/video/85753848",
+		   "shareURL":"http://www.bahai.org/toserve/ar/qualities-for-collective-action.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"qualities_for_collective_action_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/qualities_for_collective_action_ar_standard.mp4",
@@ -861,6 +988,7 @@
            "id":"85758644",
            "fileName":"building_a_new_civilization",
            "streamingURL":"http://player.vimeo.com/video/85758644",
+		   "shareURL":"http://www.bahai.org/toserve/ar/building-a-new-civilization.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"building_a_new_civilization_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/building_a_new_civilization_ar_standard.mp4",
@@ -872,6 +1000,7 @@
            "id":"86182273",
            "fileName":"responding_to_the_call",
            "streamingURL":"http://player.vimeo.com/video/86182273",
+		   "shareURL":"http://www.bahai.org/toserve/ar/responding-to-the-call.html",
 		   "downloadPath":"http://downloadcdn1.bahai.org/toserve/",
 		   "downloadFileName":"responding_to_the_call_ar_standard.mp4",
            "downloadURL":"http://downloadcdn1.bahai.org/toserve/responding_to_the_call_ar_standard.mp4",

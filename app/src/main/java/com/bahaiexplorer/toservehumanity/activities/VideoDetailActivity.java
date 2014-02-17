@@ -483,12 +483,13 @@ public class VideoDetailActivity extends BaseActivity {
     }
 
     private void createShare(){
-        String shareString = String.format(getResources().getString(R.string.share_body),
-                vo.title, vo.streamingURL);
+        String shareString = String.format(mApp.currLanguageConfig.strings.textShareBody,
+                mApp.currLanguageConfig.projectName + ":" + vo.title, vo.shareURL,
+                mApp.currLanguageConfig.appLink );
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT,
-                getResources().getString(R.string.share_subject));
+                mApp.currLanguageConfig.strings.titleShareSubject);
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareString);
         mContext.startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_title)));
     }
