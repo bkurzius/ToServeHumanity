@@ -141,7 +141,8 @@ public class VideoDetailActivity extends BaseActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_video_detail, container, false);
-
+            ToServeHumanityApplication mApp = (ToServeHumanityApplication)getActivity()
+                    .getApplication();
             ImageView iv = (ImageView) rootView.findViewById(R.id.iv_video_icon);
             TextView tvTitle = (TextView)rootView.findViewById(R.id.tv_video_title);
             TextView tvLength = (TextView)rootView.findViewById(R.id.tv_video_length);
@@ -153,16 +154,22 @@ public class VideoDetailActivity extends BaseActivity {
             tvSize.setText(vo.downloadSize);
 
             Button btnFacebook = (Button) rootView.findViewById(R.id.btn_facebutton);
-            btnFacebook.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String facebookURL = ((VideoDetailActivity)getActivity()).mApp
-                            .currLanguageConfig.facebookPage;
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse(facebookURL));
-                    startActivity(intent);
-                }
-            });
+            String facebookLink = mApp.currLanguageConfig.strings.titleFacebookLink;
+            if(facebookLink.isEmpty()){
+                btnFacebook.setVisibility(View.GONE);
+            }else{
+                btnFacebook.setText(mApp.currLanguageConfig.strings.titleFacebookLink);
+                btnFacebook.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String facebookURL = ((VideoDetailActivity)getActivity()).mApp
+                                .currLanguageConfig.facebookPage;
+                        Intent intent = new Intent(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse(facebookURL));
+                        startActivity(intent);
+                    }
+                });
+            }
 
             iv.setOnClickListener(new View.OnClickListener() {
                 @Override
