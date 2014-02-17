@@ -1,10 +1,14 @@
 package com.bahaiexplorer.toservehumanity;
 
 import android.app.Application;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
 import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -13,6 +17,7 @@ import com.bahaiexplorer.toservehumanity.model.ConfigObjects;
 import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.model.Language;
 import com.bahaiexplorer.toservehumanity.model.VideoObject;
+import com.bahaiexplorer.toservehumanity.util.ConnectionUtils;
 import com.bahaiexplorer.toservehumanity.util.JsonUtils;
 
 import org.json.JSONObject;
@@ -38,6 +43,9 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
             <LanguageChangedListener>();
     public ArrayList<ConfigChangedListener> configChangeListeners = new ArrayList
             <ConfigChangedListener>();
+    private BroadcastReceiver networkStateReceiver;
+
+    private JsonUtils jsonUtils;
 
 
     public interface LanguageChangedListener{
@@ -51,11 +59,40 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
     public void onCreate() {
         super.onCreate();
         this.prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        JsonUtils jsonUtils = new JsonUtils();
+        jsonUtils = new JsonUtils();
         jsonUtils.loadConfigFromApp(this);
+
+        //add connection chck and if not available set a listener so we are sure to load the
+        // config as soon as we get connected again
+        if(ConnectionUtils.isConnected(getApplicationContext())){
+            getJSONfromURL();
+        }else{
+            startCheckingConnection();
+        }
+
+    }
+
+    private void getJSONfromURL(){
         jsonUtils.getJSONfromURL(Constants.CONFIG_URL, this);
     }
 
+    private void startCheckingConnection(){
+       networkStateReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.d(TAG, "Network Type Changed");
+                if(ConnectionUtils.isConnected(getApplicationContext())){
+                    getJSONfromURL();
+                    // stop listening
+                    unregisterReceiver(networkStateReceiver);
+                }else{
+                    Log.d(TAG, "Keep listening");
+                }
+            }
+        };
+        IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(networkStateReceiver, filter);
+    }
 
 
     public void addLanguageListener(LanguageChangedListener listener){
