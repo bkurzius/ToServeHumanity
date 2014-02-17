@@ -217,11 +217,15 @@ public class VideoDetailActivity extends BaseActivity {
     }
 
     private void startDownload(){
-        String mFileName = vo.downloadFileName;
-        mFileStoragePath = mApp.getAlbumStorageDir(Constants.VIDEO_FOLDER).toString() + "/" + mFileName;
-        String mFileURL = Constants.DOWNLOAD_PATH + mFileName;
-        mDownloadTask = new DownloadFileFromURL();
-        mDownloadTask.execute(mFileURL);
+        if(!ConnectionUtils.isConnected(this)){
+            showNotConnectedMessage();
+        }else{
+            String mFileName = vo.downloadFileName;
+            mFileStoragePath = mApp.getAlbumStorageDir(Constants.VIDEO_FOLDER).toString() + "/" + mFileName;
+            String mFileURL = Constants.DOWNLOAD_PATH + mFileName;
+            mDownloadTask = new DownloadFileFromURL();
+            mDownloadTask.execute(mFileURL);
+        }
     }
 
     private void deleteVideoFile(boolean showToast){
@@ -285,6 +289,10 @@ public class VideoDetailActivity extends BaseActivity {
             if(UIUtils.isOSLessThanHoneycomb()){
                 Toast.makeText(mContext,mApp.getStrings().textNeedToSave,Toast.LENGTH_LONG).show();
             }else{
+                if(!ConnectionUtils.isConnected(mContext)){
+                    showNotConnectedMessage();
+                    return;
+                }
                 if(ConnectionUtils.isUsingCellularConnection(mContext) && mApp.remindOnCellularConnection()){
                     // show dialog to be sure that they want to stream
                    // Toast.makeText(mContext,"Are you sure you want to use cell data for this? You can download it instead.", Toast.LENGTH_LONG).show();
@@ -301,6 +309,8 @@ public class VideoDetailActivity extends BaseActivity {
         mVideoIntent.putExtra(WebVideoActivity.VIDEO_INDEX, index);
         this.startActivity(mVideoIntent);
     }
+
+
 
 
     /**
@@ -491,6 +501,10 @@ public class VideoDetailActivity extends BaseActivity {
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareString);
         mContext.startActivity(Intent.createChooser(sharingIntent,
                 mApp.getStrings().titleShare));
+    }
+
+    private void showNotConnectedMessage(){
+        Toast.makeText(this, mApp.getStrings().textNoInternet, Toast.LENGTH_LONG).show();
     }
 
 

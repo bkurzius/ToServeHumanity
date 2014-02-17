@@ -59,6 +59,8 @@ public class ConfigObjects {
             @Expose
             public String textSureYouWantToDelete;
             @Expose
+            public String textNoInternet;
+            @Expose
             public String textTerms;
             @Expose
             public String textIntro;

@@ -11,7 +11,7 @@ public class ConnectionUtils {
 
     /**
      * returns if the device has mobile data -- like a phone
-     * @param Context ctx
+     * @param  ctx
      * @return 	true - has mobile data capability
      * 		false - is not mobile capable
      */
@@ -24,7 +24,7 @@ public class ConnectionUtils {
 
     /**
      * returns if the device has available wifi
-     * @param Context
+     * @param
      * @return boolean - true if is available
      */
 
@@ -37,7 +37,7 @@ public class ConnectionUtils {
 
     /**
      * returns if the device has available cellular data
-     * @param Context
+     * @param
      * @return boolean - true if is available
      */
 
@@ -45,10 +45,27 @@ public class ConnectionUtils {
         ConnectivityManager connec = (ConnectivityManager) ctx
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo cellInfo = connec.getActiveNetworkInfo();
+        if(!isConnected(ctx)) return false;
         if (cellInfo.isConnected()
                 && cellInfo.getType() == ConnectivityManager.TYPE_MOBILE)
             return true;
         else
             return false;
     }
+
+    /**
+     * returns if the device has available connection
+     * @param
+     * @return boolean - true if is available
+     */
+
+    public static boolean isConnected(final Context ctx) {
+        ConnectivityManager cm = (ConnectivityManager) ctx
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        return isConnected;
+    }
+
 }

@@ -12,6 +12,8 @@ public class Constants {
     public static final String LANGUAGE_FARSI = "fa";
     public static final String LANGUAGE_ARABIC = "ar";
 
+    public static final String CACHED_CONFIG_FILENAME = "cachedConfig.json";
+
    public static final String PREFERENCE_KEY_LANGUAGE = "language";
     public static final String PREFERENCE_KEY_SEEN_TERMS = "seen_terms";
     public static final String PREFERENCE_KEY_CELLULAR_REMINDER = "dont_remind_cellular_connection";

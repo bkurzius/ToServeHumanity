@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.bahaiexplorer.toservehumanity.model.ConfigObjects;
+import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -17,6 +18,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -103,6 +106,13 @@ public class JsonUtils {
                 result = sb.toString();
                 Log.i(TAG, "This is the json result: " + result);
 
+                // cache the new one
+                FileOutputStream fos = ((Context)mListener).openFileOutput(Constants
+                        .CACHED_CONFIG_FILENAME,
+                        Context.MODE_PRIVATE);
+                fos.write(result.getBytes());
+                fos.close();
+
                 configObjs = JsonUtils.convertToClassFromJson(ConfigObjects
                         .class,
                         sb.toString());
@@ -143,11 +153,24 @@ public class JsonUtils {
             InputStream is = null;
             String result = "";
             JSONObject jArray = null;
+            FileInputStream fis = null;
+            try{
+                // try first to get a cached one
+                fis = ((Context)mListener).openFileInput (Constants.CACHED_CONFIG_FILENAME);
+            }catch(Exception e){
+                //just skip this
+                Log.e(TAG, "No cached config yet " + e.toString());
+            }
 
             // convert response to string
             try {
-
-                is = ((Context)mListener).getAssets().open("config.json");
+                if(fis != null){
+                    Log.d(TAG,"we got the cached file!!");
+                    is = fis;
+                }else{
+                    Log.d(TAG,"there is NO cached file!!");
+                    is = ((Context)mListener).getAssets().open("config.json");
+                }
                 Log.d(TAG,"the input stream is: " + is);
                 BufferedReader reader = new BufferedReader(
                         new InputStreamReader(is, "UTF-8"));
@@ -158,15 +181,17 @@ public class JsonUtils {
                 }
                 is.close();
                 result = sb.toString();
+
+
                 Log.i(TAG, "This is the json result: " + result);
 
                 configObjs = JsonUtils.convertToClassFromJson(ConfigObjects
                         .class,
                         sb.toString());
                 if(configObjs!=null){
-                    Log.d(TAG, "GetJsonFromHTTP: processJSON: configObjs:" + configObjs.toString());
+                    Log.d(TAG, "LoadConfigFromApp: processJSON: configObjs:" + configObjs.toString());
                 }else{
-                    Log.d(TAG, "GetJsonFromHTTP: WAS NULL");
+                    Log.d(TAG, "LoadConfigFromApp: WAS NULL");
                 }
 
             } catch (Exception e) {

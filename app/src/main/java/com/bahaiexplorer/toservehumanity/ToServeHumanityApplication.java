@@ -27,6 +27,7 @@ import java.util.ArrayList;
  */
 public class ToServeHumanityApplication extends Application implements JsonUtils.ConfigListener{
     final static String TAG = "ToServeHumanityApplication";
+
     public ArrayList<VideoObject> mVideoObjList;
     public TypedArray videoIconDrawables;
     private SharedPreferences prefs;
@@ -150,9 +151,10 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
     // the callback when the config is loaded
     public void configLoaded(ConfigObjects _config){
         config = _config;
+
         loadConfigValues();
         for(ConfigChangedListener list: configChangeListeners){
-            list.configChanged();;
+            list.configChanged();
         }
     }
 
