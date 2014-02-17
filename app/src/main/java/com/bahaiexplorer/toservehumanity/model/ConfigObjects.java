@@ -57,9 +57,13 @@ public class ConfigObjects {
             @Expose
             public String titleFileDeleted;
             @Expose
+            public String textSureYouWantToDelete;
+            @Expose
             public String textTerms;
             @Expose
             public String textIntro;
+            @Expose
+            public String textNeedToSave;
             @Expose
             public String alertCellularData;
         }

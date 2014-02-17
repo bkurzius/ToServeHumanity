@@ -283,8 +283,7 @@ public class VideoDetailActivity extends BaseActivity {
                 startActivity(intent);
         }else{
             if(UIUtils.isOSLessThanHoneycomb()){
-                Toast.makeText(mContext,mContext.getResources().getString(R.string
-                    .alert_need_to_save),Toast.LENGTH_LONG).show();
+                Toast.makeText(mContext,mApp.getStrings().textNeedToSave,Toast.LENGTH_LONG).show();
             }else{
                 if(ConnectionUtils.isUsingCellularConnection(mContext) && mApp.remindOnCellularConnection()){
                     // show dialog to be sure that they want to stream
@@ -400,7 +399,7 @@ public class VideoDetailActivity extends BaseActivity {
         final String dont_remind = getResources().getString(R.string.dialog_connection_warning_dont_remind_mew);
         final String cancel = getResources().getString(R.string.dialog_connection_warning_cancel);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getResources().getString(R.string.dialog_connection_warning_message))
+        builder.setMessage(mApp.getStrings().alertCellularData)
                 .setCancelable(false)
                 .setPositiveButton(ok, new DialogInterface.OnClickListener() {
                     @Override
@@ -435,7 +434,7 @@ public class VideoDetailActivity extends BaseActivity {
         final String cancel = getResources().getString(R.string
                 .dialog_delete_video_warning_cancel);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(getResources().getString(R.string.dialog_delete_video_warning_message))
+        builder.setMessage(mApp.getStrings().textSureYouWantToDelete)
                 .setCancelable(false)
                 .setPositiveButton(ok, new DialogInterface.OnClickListener() {
                     @Override

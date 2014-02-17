@@ -9,20 +9,22 @@
     "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
 	"appLink":"http://play.google.com",
     "strings":{
-		"titleLanguage":"Language-",
-		"titleAbout":"About-",
-		"titleGoToWebsite":"Go to website-",
+		"titleLanguage":"Select language",
+		"titleAbout":"About",
+		"titleGoToWebsite":"Go to website",
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"Share",
 		"titleShareSubject":"Found a great video on service",
 		"textShareBody": "Check out this video I found: %1s \n\n To view the video: %2s \n\n To download the Android app go here: %3s",
-        "titleTerms":"Terms of use-",
+        "titleTerms":"Terms of use",
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
 		"titleFileDeleted":"Video file has been deleted.",
+		"textSureYouWantToDelete":"Are you sure you want to delete this video file?",
 		"titleFacebookLink":"Join the conversation on Facebook",
+		"textNeedToSave":"You will need to save the video before playing it. Press the save button above and wait until it has fully downloaded.",
         "textTerms":"© Bahá’í World Centre, 2014\n
 Subject to the following restrictions these films may be freely reproduced in whole or in part without the need to obtain special permission:\n
 1. The Bahá’í World Centre retains full copyright protection for this film;\n
@@ -193,7 +195,9 @@ Subject to the following restrictions these films may be freely reproduced in wh
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
 		"titleFileDeleted":"Video has been deleted.",
+		"textSureYouWantToDelete":"Are you sure you want to delete this video file?",
 		"titleFacebookLink":"",
+		"textNeedToSave":"You will need to save the video before playing it. Press the save button above and wait until it has fully downloaded.",
         "textTerms":"© Bahá’í World Centre, 2014\n
 		Esta película se puede reproducir libremente, en su totalidad o en parte, sin necesidad de obtener permiso especial, sujeto a las limitaciones señaladas a continuación:\n
 1. el Centro Mundial Bahá’í retiene todos los derechos de autor de esta película;\n
@@ -363,7 +367,9 @@ Subject to the following restrictions these films may be freely reproduced in wh
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
 		"titleFileDeleted":"Video has been deleted.",
+		"textSureYouWantToDelete":"Are you sure you want to delete this video file?",
 		"titleFacebookLink":"",
+		"textNeedToSave":"You will need to save the video before playing it. Press the save button above and wait until it has fully downloaded.",
         "textTerms": '© Bahá’í World Centre, 2014\n
 		Sous réserve des restrictions suivantes, ce film peut être reproduit librement dans son intégralité ou en partie, sans qu’il soit nécessaire d’obtenir une permission spéciale :\n
 1. Le Centre mondial bahá’í détient le droit d’auteur intégral pour ce film ;\n
@@ -533,7 +539,9 @@ Subject to the following restrictions these films may be freely reproduced in wh
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
 		"titleFileDeleted":"Video has been deleted.",
+		"textSureYouWantToDelete":"Are you sure you want to delete this video file?",
 		"titleFacebookLink":"",
+		"textNeedToSave":"You will need to save the video before playing it. Press the save button above and wait until it has fully downloaded.",
         "textTerms": '© Bahá’í World Centre, 2014\n
 		Этот фильм можно свободно воспроизводить, полностью или частично, без дополнительного разрешения с учетом следующих ограничений:\n
 
@@ -702,12 +710,14 @@ Subject to the following restrictions these films may be freely reproduced in wh
         "titleShare":"به اشتراک بگذارید",
 		"titleShareSubject":"Found a great video on service",
 		"textShareBody": "Check out this video I found: %1s \n\n To view the video: %2s \n\n To download the Android app go here: %3s",
-        "titleTerms":"",
+        "titleTerms":"Terms of use",
         "titleSaving":"Saving",
-        "titleAlreadySaved":"This video is already saved.",
-        "titleSaveSucceeded":"saved",
-		"titleFileDeleted":"Video has been deleted.",
+        "titleAlreadySaved":"--This video is already saved.",
+        "titleSaveSucceeded":"Saved",
+		"titleFileDeleted":"--Video has been deleted.",
+		"textSureYouWantToDelete":"Are you sure you want to delete this video file?",
 		"titleFacebookLink":"",
+		"textNeedToSave":"You will need to save the video before playing it. Press the save button above and wait until it has fully downloaded.",
         "textTerms":'© Bahá’í World Centre, 2014\n\nبا رعایت حدود زیر، کل یا بخشی از این فیلم را می¬توان آزادانه و بدون نیاز به کسب اجازۀ خاص تکثیر کرد:
 
 \nمرکز جهانی بهائی حق نشر کامل این فیلم را برای خود محفوظ می¬دارد؛
@@ -880,7 +890,9 @@ Subject to the following restrictions these films may be freely reproduced in wh
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
 		"titleFileDeleted":"Video has been deleted.",
+		"textSureYouWantToDelete":"Are you sure you want to delete this video file?",
 		"titleFacebookLink":"",
+		"textNeedToSave":"You will need to save the video before playing it. Press the save button above and wait until it has fully downloaded.",
         "textTerms":'© Bahá’í World Centre, 2014\n\n
 		\nشريطة الالتزام بالضوابط التالية، يمكن استنساخ هذا الفيلم كليا او جزئيا دون الحاجة إلى الحصول على إذن خاص:
 
