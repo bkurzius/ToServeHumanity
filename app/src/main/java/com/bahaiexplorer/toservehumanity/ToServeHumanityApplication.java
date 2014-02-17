@@ -83,8 +83,7 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
                 Log.d(TAG, "Network Type Changed");
                 if(ConnectionUtils.isConnected(getApplicationContext())){
                     getJSONfromURL();
-                    // stop listening
-                    unregisterReceiver(networkStateReceiver);
+                    stopCheckingConnection();
                 }else{
                     Log.d(TAG, "Keep listening");
                 }
@@ -92,6 +91,11 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
         };
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(networkStateReceiver, filter);
+    }
+
+    private void stopCheckingConnection(){
+        // stop listening
+        unregisterReceiver(networkStateReceiver);
     }
 
 
