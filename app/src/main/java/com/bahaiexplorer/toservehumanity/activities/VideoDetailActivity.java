@@ -83,10 +83,10 @@ public class VideoDetailActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.video_detail, menu);
         // these are change on the fly so we can reset them based on the state
         int saveDrawable = R.drawable.ic_action_save;
-        String saveTxt = "Save";
+        String saveTxt = mApp.currLanguageConfig.strings.titleSave;
         if(isVideoSaved()){
             saveDrawable = R.drawable.ic_action_saved;
-            saveTxt = "Saved";
+            saveTxt = mApp.currLanguageConfig.strings.titleSaved;
         }
         MenuItem mi = menu.getItem(0);
         mi.setIcon(saveDrawable);
@@ -96,7 +96,7 @@ public class VideoDetailActivity extends BaseActivity {
         menu.add(0,MENU_ITEM_ID_SAVED,0,saveTxt)
                 .setIcon(saveDrawable);
                // .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);*/
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -232,7 +232,7 @@ public class VideoDetailActivity extends BaseActivity {
         if(deleted){
             vo.isSaved = false;
             if(showToast){
-            Toast.makeText(mContext, getResources().getString(R.string.title_video_file_deleted),
+            Toast.makeText(this,mApp.currLanguageConfig.strings.titleFileDeleted,
                     Toast.LENGTH_SHORT).show();
             }
             supportInvalidateOptionsMenu();
@@ -252,7 +252,7 @@ public class VideoDetailActivity extends BaseActivity {
         switch (id) {
             case progress_bar_type: // we set this to 0
                 pDialog = new ProgressDialog(this);
-                pDialog.setMessage(mContext.getResources().getString(R.string.title_downloading_video));
+                pDialog.setMessage(mApp.getStrings().titleSaving);
                 pDialog.setIndeterminate(false);
                 pDialog.setMax(100);
                 pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
@@ -298,7 +298,6 @@ public class VideoDetailActivity extends BaseActivity {
     }
 
     private void startStream(){
-        //String vidID = getResources().getStringArray(R.array.video_id_array)[index];
         Intent mVideoIntent = new Intent(this,WebVideoActivity.class);
         mVideoIntent.putExtra(WebVideoActivity.VIDEO_INDEX, index);
         this.startActivity(mVideoIntent);
@@ -491,7 +490,8 @@ public class VideoDetailActivity extends BaseActivity {
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT,
                 mApp.currLanguageConfig.strings.titleShareSubject);
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareString);
-        mContext.startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_title)));
+        mContext.startActivity(Intent.createChooser(sharingIntent,
+                mApp.getStrings().titleShare));
     }
 
 

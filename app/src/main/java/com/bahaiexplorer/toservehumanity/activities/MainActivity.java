@@ -87,6 +87,7 @@ public class MainActivity extends BaseActivity implements ToServeHumanityApplica
             adapter = new CustomListAdapter(this, R.layout.list_item_view,vl);
             mIconListView.setAdapter(adapter);
             getSupportActionBar().setTitle(mApp.currLanguageConfig.projectName);
+            supportInvalidateOptionsMenu();
         }
 
     }
@@ -96,7 +97,7 @@ public class MainActivity extends BaseActivity implements ToServeHumanityApplica
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override

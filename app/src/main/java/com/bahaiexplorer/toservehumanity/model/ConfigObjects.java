@@ -29,7 +29,11 @@ public class ConfigObjects {
 
         public class Strings{
             @Expose
+            public String titleLanguage;
+            @Expose
             public String titleGoToWebsite;
+            @Expose
+            public String titleAbout;
             @Expose
             public String titleSave;
             @Expose
@@ -50,6 +54,8 @@ public class ConfigObjects {
             public String titleAlreadySaved;
             @Expose
             public String titleSaveSucceeded;
+            @Expose
+            public String titleFileDeleted;
             @Expose
             public String textTerms;
             @Expose

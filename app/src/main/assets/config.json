@@ -9,15 +9,19 @@
     "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
 	"appLink":"http://play.google.com",
     "strings":{
+		"titleLanguage":"Language-",
+		"titleAbout":"About-",
+		"titleGoToWebsite":"Go to website-",
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"Share",
 		"titleShareSubject":"Found a great video on service",
 		"textShareBody": "Check out this video I found: %1s \n\n To view the video: %2s \n\n To download the Android app go here: %3s",
-        "titleTerms":"Terms of use",
+        "titleTerms":"Terms of use-",
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
+		"titleFileDeleted":"Video file has been deleted.",
 		"titleFacebookLink":"Join the conversation on Facebook",
         "textTerms":"© Bahá’í World Centre, 2014\n
 Subject to the following restrictions these films may be freely reproduced in whole or in part without the need to obtain special permission:\n
@@ -176,6 +180,9 @@ Subject to the following restrictions these films may be freely reproduced in wh
     "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
 	"appLink":"http://play.google.com",
     "strings":{
+		"titleLanguage":"Language",
+		"titleAbout":"About",
+		"titleGoToWebsite":"Go to website",
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"Compartir",
@@ -185,6 +192,7 @@ Subject to the following restrictions these films may be freely reproduced in wh
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
+		"titleFileDeleted":"Video has been deleted.",
 		"titleFacebookLink":"",
         "textTerms":"© Bahá’í World Centre, 2014\n
 		Esta película se puede reproducir libremente, en su totalidad o en parte, sin necesidad de obtener permiso especial, sujeto a las limitaciones señaladas a continuación:\n
@@ -342,6 +350,9 @@ Subject to the following restrictions these films may be freely reproduced in wh
     "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
 	"appLink":"http://play.google.com",
     "strings":{
+		"titleLanguage":"Language",
+		"titleAbout":"About",
+		"titleGoToWebsite":"Go to website",
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"Partager",
@@ -351,6 +362,7 @@ Subject to the following restrictions these films may be freely reproduced in wh
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
+		"titleFileDeleted":"Video has been deleted.",
 		"titleFacebookLink":"",
         "textTerms": '© Bahá’í World Centre, 2014\n
 		Sous réserve des restrictions suivantes, ce film peut être reproduit librement dans son intégralité ou en partie, sans qu’il soit nécessaire d’obtenir une permission spéciale :\n
@@ -508,6 +520,9 @@ Subject to the following restrictions these films may be freely reproduced in wh
     "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
 	"appLink":"http://play.google.com",
     "strings":{
+		"titleLanguage":"Language",
+		"titleAbout":"About",
+		"titleGoToWebsite":"Go to website",
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"Поделиться",
@@ -517,6 +532,7 @@ Subject to the following restrictions these films may be freely reproduced in wh
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
+		"titleFileDeleted":"Video has been deleted.",
 		"titleFacebookLink":"",
         "textTerms": '© Bahá’í World Centre, 2014\n
 		Этот фильм можно свободно воспроизводить, полностью или частично, без дополнительного разрешения с учетом следующих ограничений:\n
@@ -678,6 +694,9 @@ Subject to the following restrictions these films may be freely reproduced in wh
     "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
 	"appLink":"http://play.google.com",
     "strings":{
+		"titleLanguage":"Language",
+		"titleAbout":"About",
+		"titleGoToWebsite":"Go to website",
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"به اشتراک بگذارید",
@@ -687,6 +706,7 @@ Subject to the following restrictions these films may be freely reproduced in wh
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
+		"titleFileDeleted":"Video has been deleted.",
 		"titleFacebookLink":"",
         "textTerms":'© Bahá’í World Centre, 2014\n\nبا رعایت حدود زیر، کل یا بخشی از این فیلم را می¬توان آزادانه و بدون نیاز به کسب اجازۀ خاص تکثیر کرد:
 
@@ -847,6 +867,9 @@ Subject to the following restrictions these films may be freely reproduced in wh
     "facebookPage":"https://www.facebook.com/groups/95youthconferences/",
 	"appLink":"http://play.google.com",
     "strings":{
+		"titleLanguage":"Language",
+		"titleAbout":"About",
+		"titleGoToWebsite":"Go to website",
         "titleSave":"Save",
         "titleSaved":"Saved",
         "titleShare":"المشاركة",
@@ -856,6 +879,7 @@ Subject to the following restrictions these films may be freely reproduced in wh
         "titleSaving":"Saving",
         "titleAlreadySaved":"This video is already saved.",
         "titleSaveSucceeded":"saved",
+		"titleFileDeleted":"Video has been deleted.",
 		"titleFacebookLink":"",
         "textTerms":'© Bahá’í World Centre, 2014\n\n
 		\nشريطة الالتزام بالضوابط التالية، يمكن استنساخ هذا الفيلم كليا او جزئيا دون الحاجة إلى الحصول على إذن خاص:

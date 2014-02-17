@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
+import com.bahaiexplorer.toservehumanity.model.ConfigObjects;
 
 public class BaseActivity extends ActionBarActivity {
     private static final String TAG = "BaseActivity";
@@ -21,6 +22,29 @@ public class BaseActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        final ToServeHumanityApplication mApp = (ToServeHumanityApplication)getApplication();
+        final ConfigObjects.ConfigObject.Strings strings = mApp.getStrings();
+        if(strings != null){
+            // replace the text with the languages options
+            for(int i=0;i< menu.size();i++){
+                MenuItem mi = menu.getItem(i);
+                int id = mi.getItemId();
+                switch(id){
+                    case R.id.action_about:
+                        mi.setTitle(strings.titleAbout);
+                        break;
+                    case R.id.action_language:
+                        mi.setTitle(strings.titleLanguage);
+                        break;
+                    case R.id.action_gotowebsite:
+                        mi.setTitle(strings.titleGoToWebsite);
+                        break;
+                    case R.id.action_terms_of_use:
+                        mi.setTitle(strings.titleTerms);
+                        break;
+                }
+            }
+        }
         return true;
     }
 

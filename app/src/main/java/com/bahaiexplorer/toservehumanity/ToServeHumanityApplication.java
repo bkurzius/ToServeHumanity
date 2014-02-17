@@ -86,6 +86,15 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
     }
 
 
+    public ConfigObjects.ConfigObject.Strings getStrings(){
+        if(currLanguageConfig!=null){
+            return currLanguageConfig.strings;
+        }else{
+            return null;
+        }
+    }
+
+
     static public File getSavedVideoFile(final Context context, String fileName){
         File[] files = getSavedFiles();
         for(File file:files){
@@ -97,6 +106,7 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
         }
         return null;
     }
+
 
 
     /* Checks if external storage is available for read and write */
