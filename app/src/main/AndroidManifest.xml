@@ -44,6 +44,10 @@
             android:name="com.bahaiexplorer.toservehumanity.activities.AboutActivity"
             android:label="@string/title_activity_about" >
         </activity>
+        <activity
+            android:name="com.bahaiexplorer.toservehumanity.activities.TermsActivity"
+            android:label="@string/title_activity_terms" >
+        </activity>
     </application>
 
 </manifest>

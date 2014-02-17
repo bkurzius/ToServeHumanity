@@ -42,15 +42,9 @@ public class BaseActivity extends ActionBarActivity {
     }
 
     public void showTerms(){
-       /* Intent intent = new Intent(this,TermsActivity.class);
-        startActivity(intent);*/
+       Intent intent = new Intent(this,TermsActivity.class);
+       startActivity(intent);
     }
-
-
-
-
-
-
 
 
 }
