@@ -37,6 +37,8 @@ public class ConfigObjects {
             @Expose
             public String titleSaving;
             @Expose
+            public String titleFacebookLink;
+            @Expose
             public String titleAlreadySaved;
             @Expose
             public String titleSaveSucceeded;
