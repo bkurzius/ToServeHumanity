@@ -201,7 +201,6 @@ public class VideoDetailActivity extends BaseActivity {
             // if this is the first time then show the dialog terms
             if(!mApp.getSeenTermsOfUse()){
                 showTermsDialog();
-                mApp.setSeenTermsOfUse(true);
             }else{
                 startDownload();
             }
@@ -463,6 +462,7 @@ public class VideoDetailActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         startDownload();
+                        mApp.setSeenTermsOfUse(true);
                     }
                 })
                 .setNegativeButton(cancel, new DialogInterface.OnClickListener() {

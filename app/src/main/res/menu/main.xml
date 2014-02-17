@@ -10,8 +10,5 @@
           android:title="@string/action_about"
           android:orderInCategory="101"
           app:showAsAction="never" />
-    <item android:id="@+id/action_terms_of_use"
-          android:title="@string/action_terms"
-          android:orderInCategory="102"
-          app:showAsAction="never" />
+
 </menu>

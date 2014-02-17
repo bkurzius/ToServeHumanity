@@ -208,17 +208,6 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
         return prefs.getString(Constants.PREFERENCE_KEY_LANGUAGE, Constants.LANGUAGE_ENGLISH);
     }
 
-    public boolean getSeenTermsOfUse(){
-        //set a preference not to remind on this version
-        return prefs.getBoolean(Constants.PREFERENCE_KEY_SEEN_TERMS, false);
-    }
-
-    public void setSeenTermsOfUse(boolean tf){
-        SharedPreferences.Editor edit = prefs.edit();
-        edit.putBoolean(Constants.PREFERENCE_KEY_SEEN_TERMS, tf);
-        edit.commit();
-    }
-
     public int getLanguagePreferenceIndex(){
         int index = 0;
         String lang = getLanguagePreference();
@@ -226,20 +215,15 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
         ArrayList<Language> langArray = getLanguageArray();
         for(int i =0; i<langArray.size(); i++){
             Language language = langArray.get(i);
-            Log.d(TAG,"the current lang is:" + language.id);
-            Log.d(TAG,"the lang in the pref is:" + lang);
-            Log.d(TAG,"the index is:" + i);
             if(language.id.equalsIgnoreCase(lang)){
                 index = i;
                 Log.d(TAG,"got it:" + i);
                 break;
             }
-
         }
         //set a preference not to remind on this version
         return index;
     }
-
 
     public void setRemindOnCellularConnection(){
         //set a preference not to remind on this version
@@ -250,6 +234,19 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
 
     public boolean remindOnCellularConnection(){
         return prefs.getBoolean(Constants.PREFERENCE_KEY_CELLULAR_REMINDER, true);
+    }
+
+    public boolean getSeenTermsOfUse(){
+        return prefs.getBoolean(Constants.PREFERENCE_KEY_SEEN_TERMS + currLanguageConfig
+                .language, false);
+    }
+
+    public void setSeenTermsOfUse(boolean tf){
+        // add the languages so we are sure they see it in all languages
+        SharedPreferences.Editor edit = prefs.edit();
+        edit.putBoolean(Constants.PREFERENCE_KEY_SEEN_TERMS + currLanguageConfig
+                .language, tf);
+        edit.commit();
     }
 
     /**

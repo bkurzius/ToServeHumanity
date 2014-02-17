@@ -13,6 +13,7 @@ import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
 
 public class TermsActivity extends BaseActivity {
+    private ToServeHumanityApplication mApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,8 @@ public class TermsActivity extends BaseActivity {
                     .add(R.id.container, new PlaceholderFragment())
                     .commit();
         }
+        mApp = (ToServeHumanityApplication)getApplication();
+        getSupportActionBar().setTitle(mApp.currLanguageConfig.strings.titleTerms);
     }
 
 
@@ -48,11 +51,11 @@ public class TermsActivity extends BaseActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            ToServeHumanityApplication app = (ToServeHumanityApplication)getActivity()
+            ToServeHumanityApplication mApp = (ToServeHumanityApplication)getActivity()
                     .getApplication();
             View rootView = inflater.inflate(R.layout.fragment_terms, container, false);
             TextView tvTerms = (TextView)rootView.findViewById(R.id.tv_terms);
-            String terms = app.currLanguageConfig.strings.textTerms;
+            String terms = mApp.currLanguageConfig.strings.textTerms;
             tvTerms.setText(terms);
             return rootView;
         }

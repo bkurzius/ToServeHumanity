@@ -13,5 +13,9 @@
         android:orderInCategory="101"
         android:icon="@drawable/ic_share"
         app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_terms_of_use"
+          android:title="@string/action_terms"
+          android:orderInCategory="102"
+          app:showAsAction="never" />
 
 </menu>
