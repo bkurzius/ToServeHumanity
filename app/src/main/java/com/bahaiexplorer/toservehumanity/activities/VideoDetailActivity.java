@@ -55,6 +55,7 @@ public class VideoDetailActivity extends BaseActivity {
 
     private CountDownTimer mDeleteVideoTimer;
     private Button btnFacebook;
+    private DownloadFileFromURL mDownloadTask;
 
     ToServeHumanityApplication mApp;
     static final int progress_bar_type = 0;
@@ -197,23 +198,39 @@ public class VideoDetailActivity extends BaseActivity {
         if(mApp.isVideoFileSaved(mContext, mFileName)){
             showDeleteVideoWarningDialog();
         }else{
-            mFileStoragePath = mApp.getAlbumStorageDir(Constants.VIDEO_FOLDER).toString() + "/" + mFileName;
-            String mFileURL = Constants.DOWNLOAD_PATH + mFileName;
-            new DownloadFileFromURL().execute(mFileURL);
+            // if this is the first time then show the dialog terms
+            if(!mApp.getSeenTermsOfUse()){
+                showTermsDialog();
+                mApp.setSeenTermsOfUse(true);
+            }else{
+                startDownload();
+            }
+
         }
 
     }
 
-    private void deleteVideoFile(){
+    private void startDownload(){
+        String mFileName = vo.downloadFileName;
+        mFileStoragePath = mApp.getAlbumStorageDir(Constants.VIDEO_FOLDER).toString() + "/" + mFileName;
+        String mFileURL = Constants.DOWNLOAD_PATH + mFileName;
+        mDownloadTask = new DownloadFileFromURL();
+        mDownloadTask.execute(mFileURL);
+    }
+
+    private void deleteVideoFile(boolean showToast){
         Log.d(TAG," vo.downloadFileName: " + vo.downloadFileName);
         String mFileName = vo.downloadFileName;
         File file =  mApp.getSavedVideoFile(mContext, mFileName);
         boolean deleted = file.delete();
         if(deleted){
             vo.isSaved = false;
+            if(showToast){
             Toast.makeText(mContext, getResources().getString(R.string.title_video_file_deleted),
                     Toast.LENGTH_SHORT).show();
+            }
             supportInvalidateOptionsMenu();
+
         }
     }
 
@@ -234,6 +251,13 @@ public class VideoDetailActivity extends BaseActivity {
                 pDialog.setMax(100);
                 pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                 pDialog.setCancelable(true);
+                pDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        mDownloadTask.cancel(true);
+                        deleteVideoFile(false);
+                    }
+                });
                 pDialog.show();
                 return pDialog;
             default:
@@ -352,7 +376,7 @@ public class VideoDetailActivity extends BaseActivity {
         @Override
         protected void onPostExecute(String file_url) {
             // dismiss the dialog after the file was downloaded
-            dismissDialog(progress_bar_type);
+            if(pDialog.isShowing()) dismissDialog(progress_bar_type);
             vo.isSaved = true;
             supportInvalidateOptionsMenu();
             Toast.makeText(mContext, getResources().getString(R.string.title_downloading_succeeded),Toast.LENGTH_SHORT).show();
@@ -411,7 +435,7 @@ public class VideoDetailActivity extends BaseActivity {
                 .setPositiveButton(ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        deleteVideoFile();
+                        deleteVideoFile(true);
                     }
                 })
                 .setNeutralButton(cancel, new DialogInterface.OnClickListener() {
@@ -422,6 +446,31 @@ public class VideoDetailActivity extends BaseActivity {
                 });
 
 
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+
+    public void showTermsDialog(){
+        Log.d(TAG, "showTermsDialog()");
+        final String ok = getResources().getString(R.string.dialog_connection_warning_ok);
+        final String cancel = getResources().getString(R.string.dialog_connection_warning_cancel);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(mApp.currLanguageConfig.strings.textTerms)
+                .setTitle(mApp.currLanguageConfig.strings.titleTerms)
+                .setCancelable(false)
+                .setPositiveButton(ok, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        startDownload();
+                    }
+                })
+                .setNegativeButton(cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // don't do anything
+                    }
+                });
         AlertDialog alert = builder.create();
         alert.show();
     }
