@@ -39,6 +39,8 @@ public class ConfigObjects {
             @Expose
             public String titleSaved;
             @Expose
+            public String titleFeedback;
+            @Expose
             public String titleShare;
             @Expose
             public String titleShareSubject;

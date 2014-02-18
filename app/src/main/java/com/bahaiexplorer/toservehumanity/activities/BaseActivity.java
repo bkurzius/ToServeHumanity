@@ -63,6 +63,10 @@ public class BaseActivity extends ActionBarActivity {
             gotoWebsite();
             return true;
         }
+        else if (id == R.id.action_feedback) {
+            sendFeedback();
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -81,6 +85,19 @@ public class BaseActivity extends ActionBarActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(mApp.currLanguageConfig.website) );
         startActivity(intent);
+    }
+
+    public void sendFeedback(){
+        final ToServeHumanityApplication mApp = (ToServeHumanityApplication)getApplication();
+
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT,
+                getResources().getString(R.string.feedback_subject));
+        sharingIntent.putExtra(Intent.EXTRA_EMAIL,
+                new String[] {getResources().getString(R.string.feedback_email)});
+        this.startActivity(Intent.createChooser(sharingIntent,
+                mApp.getStrings().titleShare));
     }
 
 
