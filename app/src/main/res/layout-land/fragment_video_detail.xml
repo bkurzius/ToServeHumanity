@@ -18,12 +18,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:background="#000000"
+
         >
     <ImageView
         android:id="@+id/iv_video_icon"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
+        android:layout_width="@dimen/icon_width"
+        android:layout_height="@dimen/icon_height"
         android:layout_gravity="center"
 
         />
@@ -41,7 +41,6 @@
         android:layout_toRightOf="@id/vg_icon_holder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
         android:textSize="@dimen/detail_title_height"/>
     <LinearLayout

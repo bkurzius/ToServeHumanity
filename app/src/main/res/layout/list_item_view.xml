@@ -7,10 +7,11 @@
     android:padding="10dp">
 
     <ImageView
-        android:layout_width="@dimen/list_icon_size"
-        android:layout_height="@dimen/list_icon_size"
+        android:layout_width="@dimen/list_icon_width"
+        android:layout_height="@dimen/list_icon_height"
         android:id="@+id/iv_icon"
-        android:background="#666"/>
+        android:background="#666"
+        android:layout_gravity="center_vertical"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
