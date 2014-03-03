@@ -74,6 +74,8 @@ public class VideoDetailActivity extends BaseActivity {
                     .commit();
         }
         getSupportActionBar().setTitle("Detail");
+        // set analytics
+        ((ToServeHumanityApplication)getApplication()).trackScreen(Constants.TRACK_SCREEN_DETAIL);
     }
 
 
@@ -162,6 +164,10 @@ public class VideoDetailActivity extends BaseActivity {
                 btnFacebook.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        // analytics
+                        ((ToServeHumanityApplication)getActivity().getApplication()).trackEvent
+                                (Constants
+                                        .TRACK_EVENT_TYPE_GOTO_FACEBOOK,"");
                         String facebookURL = ((VideoDetailActivity)getActivity()).mApp
                                 .currLanguageConfig.facebookPage;
                         Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -177,10 +183,6 @@ public class VideoDetailActivity extends BaseActivity {
                     ((VideoDetailActivity)getActivity()).openVideo();
                 }
             });
-
-
-
-
             return rootView;
         }
     }
@@ -225,6 +227,10 @@ public class VideoDetailActivity extends BaseActivity {
             String mFileURL = Constants.DOWNLOAD_PATH + mFileName;
             mDownloadTask = new DownloadFileFromURL();
             mDownloadTask.execute(mFileURL);
+            // analytics
+            ((ToServeHumanityApplication)getApplication()).trackEvent
+                    (Constants
+                            .TRACK_EVENT_TYPE_DOWNLOAD_VIDEO,mFileName);
         }
     }
 
@@ -242,6 +248,9 @@ public class VideoDetailActivity extends BaseActivity {
             supportInvalidateOptionsMenu();
 
         }
+        ((ToServeHumanityApplication)getApplication()).trackEvent
+                (Constants
+                        .TRACK_EVENT_TYPE_DELETE_VIDEO,mFileName);
     }
 
 
@@ -488,6 +497,9 @@ public class VideoDetailActivity extends BaseActivity {
                 });
         AlertDialog alert = builder.create();
         alert.show();
+        ((ToServeHumanityApplication)getApplication()).trackEvent
+                (Constants
+                        .TRACK_EVENT_TYPE_SHARE,vo.fileName);
     }
 
     private void createShare(){

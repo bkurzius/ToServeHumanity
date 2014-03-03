@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
+import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.model.VideoObject;
+import com.google.analytics.tracking.android.EasyTracker;
 
 /**
  * Created by briankurzius on 2/8/14.
@@ -39,6 +41,11 @@ public class WebVideoActivity extends Activity{
         }
 
         setContentView(mWebView.getLayout());
+        // set analytics
+        ((ToServeHumanityApplication)getApplication()).trackScreen(Constants.TRACK_SCREEN_STREAM_VIDEO);
+        ((ToServeHumanityApplication)getApplication()).trackEvent
+                (Constants
+                        .TRACK_EVENT_TYPE_PLAY_VIDEO,vo.streamingURL);
     }
 
     @Override
@@ -52,6 +59,7 @@ public class WebVideoActivity extends Activity{
         super.onStop();
         //mWebView.stopLoading();
         mWebView.destroy();
+        EasyTracker.getInstance(this).activityStop(this);  // Add this method.
     }
 
     @Override
@@ -68,5 +76,14 @@ public class WebVideoActivity extends Activity{
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+    }
+
+
 }
 

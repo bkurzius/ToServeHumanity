@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
+import com.bahaiexplorer.toservehumanity.model.Constants;
 
 public class TermsActivity extends BaseActivity {
     private ToServeHumanityApplication mApp;
@@ -26,7 +27,9 @@ public class TermsActivity extends BaseActivity {
                     .commit();
         }
         mApp = (ToServeHumanityApplication)getApplication();
-        getSupportActionBar().setTitle(mApp.currLanguageConfig.strings.titleTerms);
+        getSupportActionBar().setTitle(mApp.currLanguageConfig.strings.titleTerms);// set analytics
+        ((ToServeHumanityApplication)getApplication()).trackScreen(Constants
+                .TRACK_SCREEN_TERMS);
     }
 
 

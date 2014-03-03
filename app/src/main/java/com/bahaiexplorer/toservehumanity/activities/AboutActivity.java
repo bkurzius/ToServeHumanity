@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
+import com.bahaiexplorer.toservehumanity.model.Constants;
 
 public class AboutActivity extends BaseActivity {
 
@@ -26,6 +27,8 @@ public class AboutActivity extends BaseActivity {
         }
         getSupportActionBar().setTitle(((ToServeHumanityApplication)getApplication()).getStrings()
                 .titleAbout);
+        ((ToServeHumanityApplication)getApplication()).trackScreen(Constants
+                .TRACK_SCREEN_ABOUT);
     }
 
 

@@ -10,6 +10,7 @@ import android.util.Log;
 import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
 import com.bahaiexplorer.toservehumanity.activities.MainActivity;
+import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.model.Language;
 
 import java.util.ArrayList;
@@ -50,6 +51,10 @@ public class LanguageDialogFragment extends DialogFragment {
                         Log.d(TAG, "the language was chosen");
                         MainActivity act = (MainActivity) getActivity();
                         act.setLanguage(langArray.get(selectedLanguage).id);
+                        // analytics
+                        ((ToServeHumanityApplication)getActivity().getApplication()).trackEvent
+                                (Constants
+                                .TRACK_EVENT_TYPE_CHANGE_LANGUAGE,langArray.get(selectedLanguage).id);
                     }
                 })
                 .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {

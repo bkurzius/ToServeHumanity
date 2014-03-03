@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
 import com.bahaiexplorer.toservehumanity.model.ConfigObjects;
+import com.google.analytics.tracking.android.EasyTracker;
 
 public class BaseActivity extends ActionBarActivity {
     private static final String TAG = "BaseActivity";
@@ -98,6 +99,19 @@ public class BaseActivity extends ActionBarActivity {
                 new String[] {getResources().getString(R.string.feedback_email)});
         this.startActivity(Intent.createChooser(sharingIntent,
                 mApp.getStrings().titleShare));
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);  // Add this method.
     }
 
 

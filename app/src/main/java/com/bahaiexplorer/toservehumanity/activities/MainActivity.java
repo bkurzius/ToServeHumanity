@@ -24,6 +24,7 @@ import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
 import com.bahaiexplorer.toservehumanity.fragments.LanguageDialogFragment;
 import com.bahaiexplorer.toservehumanity.model.VideoItem;
 import com.bahaiexplorer.toservehumanity.model.VideoObject;
+import com.bahaiexplorer.toservehumanity.model.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +67,9 @@ public class MainActivity extends BaseActivity implements ToServeHumanityApplica
         }
 
         mIconListView = (ListView)findViewById(R.id.lv_video_items);
+
+        // set analytics
+        ((ToServeHumanityApplication)getApplication()).trackScreen(Constants.TRACK_SCREEN_HOME);
 
     }
 

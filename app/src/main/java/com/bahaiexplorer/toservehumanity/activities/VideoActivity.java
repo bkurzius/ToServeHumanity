@@ -13,7 +13,9 @@ import android.widget.VideoView;
 
 import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
+import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.util.SystemUiHider;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import java.io.File;
 
@@ -147,6 +149,11 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         //findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        // set analytics
+        ((ToServeHumanityApplication)getApplication()).trackScreen(Constants.TRACK_SCREEN_VIDEO);
+        ((ToServeHumanityApplication)getApplication()).trackEvent
+                (Constants
+                        .TRACK_EVENT_TYPE_PLAY_VIDEO,fileName);
     }
 
     @Override
@@ -192,6 +199,19 @@ public class VideoActivity extends Activity implements MediaController.MediaPlay
         Log.d(TAG,"delayedHide");
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);  // Add this method.
     }
 
 

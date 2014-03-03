@@ -7,7 +7,9 @@ import android.widget.VideoView;
 
 import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
+import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.util.SystemUiHider;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import java.io.File;
 
@@ -71,6 +73,13 @@ public class VideoActivityGingerbread extends Activity implements MediaControlle
         //video.setKeepScreenOn(true);
         video.setVideoPath(videoFile.getPath());
         video.start();
+
+        // set analytics
+        ((ToServeHumanityApplication)getApplication()).trackScreen(Constants
+                .TRACK_SCREEN_VIDEO_GINGERBREAD);
+        ((ToServeHumanityApplication)getApplication()).trackEvent
+                (Constants
+                        .TRACK_EVENT_TYPE_PLAY_VIDEO,fileName);
 
     }
         //video.requestFocus();
@@ -188,6 +197,19 @@ public class VideoActivityGingerbread extends Activity implements MediaControlle
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }*/
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        EasyTracker.getInstance(this).activityStart(this);  // Add this method.
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EasyTracker.getInstance(this).activityStop(this);  // Add this method.
+    }
 
 
     @Override

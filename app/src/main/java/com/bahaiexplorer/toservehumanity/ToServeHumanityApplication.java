@@ -19,12 +19,18 @@ import com.bahaiexplorer.toservehumanity.model.Language;
 import com.bahaiexplorer.toservehumanity.model.VideoObject;
 import com.bahaiexplorer.toservehumanity.util.ConnectionUtils;
 import com.bahaiexplorer.toservehumanity.util.JsonUtils;
+import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Fields;
+import com.google.analytics.tracking.android.GAServiceManager;
+import com.google.analytics.tracking.android.GoogleAnalytics;
+import com.google.analytics.tracking.android.MapBuilder;
+import com.google.analytics.tracking.android.Tracker;
 
 import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 
 
 /**
@@ -46,6 +52,9 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
     private BroadcastReceiver networkStateReceiver;
 
     private JsonUtils jsonUtils;
+
+    private static GoogleAnalytics mGa;
+    private static Tracker mTracker;
 
 
     public interface LanguageChangedListener{
@@ -70,8 +79,24 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
             startCheckingConnection();
         }
 
+        initializeGa();
+
     }
 
+    private void initializeGa() {
+        mGa = GoogleAnalytics.getInstance(this);
+        mTracker = mGa.getTracker(Constants.GA_ANALYTICS_ID);
+
+        // Set dispatch period.
+        GAServiceManager.getInstance().setLocalDispatchPeriod(Constants.GA_DISPATCH_PERIOD);
+
+        // Set dryRun flag.
+        mGa.setDryRun(Constants.GA_IS_DRY_RUN);
+
+        // Set Logger verbosity.
+        mGa.getLogger().setLogLevel(Constants.GA_LOG_VERBOSITY);
+
+    }
     private void getJSONfromURL(){
         jsonUtils.getJSONfromURL(Constants.CONFIG_URL, this);
     }
@@ -335,6 +360,77 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
 
         return languageArray;
     }
+
+
+    /**
+     *  ANALYTICS
+     *
+     *
+     */
+
+
+    // Returns the Google Analytics tracker.
+
+
+    public static Tracker getGaTracker() {
+        return mTracker;
+    }
+
+    // * Returns the Google Analytics instance.
+
+
+    public static GoogleAnalytics getGaInstance() {
+        return mGa;
+    }
+
+    /**
+     * not sure if this is working
+     * @param screenName
+     */
+    public void  trackScreen(String screenName){
+        /*
+        * Send a screen view to Google Analytics by setting a map of parameter
+        * values on the tracker and calling send.
+        */
+        HashMap<String, String> hitParameters = new HashMap<String, String>();
+        hitParameters.put(Fields.SCREEN_NAME, screenName);
+        getGaTracker().send(hitParameters);
+
+
+    }
+
+    /**
+     * Tracks a user event
+     * @param eventType
+     * @param eventName
+     */
+    public void trackEvent(String eventType, String eventName){
+        /*
+        * Send a screen view to Google Analytics by setting a map of parameter
+        * values on the tracker and calling send.
+        */
+
+        HashMap<String, String> hitParameters = new HashMap<String, String>();
+        hitParameters.put(Fields.EVENT_ACTION, eventType);
+        hitParameters.put(Fields.EVENT_VALUE, eventName);
+        getGaTracker().send(hitParameters);
+
+
+        EasyTracker easyTracker = EasyTracker.getInstance(this);
+
+        // MapBuilder.createEvent().build() returns a Map of event fields and values
+        // that are set and sent with the hit.
+        easyTracker.send(MapBuilder
+                .createEvent(eventType,     // Event category (required)
+                        eventName,  // Event action (required)
+                        null,   // Event label
+                        null)            // Event value
+                .build()
+        );
+
+    }
+
+
 
 
 }
