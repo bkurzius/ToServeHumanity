@@ -12,15 +12,17 @@ public class Constants {
     public static final boolean GA_IS_DRY_RUN = false;
     public static final Logger.LogLevel GA_LOG_VERBOSITY = Logger.LogLevel.INFO;
 
-    public static final String TRACK_SCREEN_HOME = "home_view";
-    public static final String TRACK_SCREEN_DETAIL = "detail_view";
-    public static final String TRACK_SCREEN_STREAM_VIDEO = "stream_video_view";
-    public static final String TRACK_SCREEN_VIDEO = "video_view";
-    public static final String TRACK_SCREEN_VIDEO_GINGERBREAD = "video_view_gingerbread";
-    public static final String TRACK_SCREEN_TERMS = "terms_view";
-    public static final String TRACK_SCREEN_ABOUT = "about_view";
+    public static final String TRACK_SCREEN_HOME = "trackscreen_home";
+    public static final String TRACK_SCREEN_DETAIL = "trackscreen_detail";
+    public static final String TRACK_SCREEN_STREAM_VIDEO = "trackscreen_stream_video";
+    public static final String TRACK_SCREEN_VIDEO = "trackscreen_watch_video";
+    public static final String TRACK_SCREEN_VIDEO_GINGERBREAD =
+            "trackscreen_watch_video_gingerbread";
+    public static final String TRACK_SCREEN_TERMS = "trackscreen_terms";
+    public static final String TRACK_SCREEN_ABOUT = "trackscreen_about";
 
     public static final String TRACK_EVENT_TYPE_DOWNLOAD_VIDEO = "Event_download_video";
+    public static final String TRACK_EVENT_TYPE_VIEW_VIDEO = "Event_view_video";
     public static final String TRACK_EVENT_TYPE_PLAY_VIDEO = "Event_play_video";
     public static final String TRACK_EVENT_TYPE_STREAM_VIDEO = "Event_stream_video";
     public static final String TRACK_EVENT_TYPE_SHARE = "Event_share";

@@ -76,6 +76,9 @@ public class VideoDetailActivity extends BaseActivity {
         getSupportActionBar().setTitle("Detail");
         // set analytics
         ((ToServeHumanityApplication)getApplication()).trackScreen(Constants.TRACK_SCREEN_DETAIL);
+        ((ToServeHumanityApplication)getApplication()).trackEvent
+                (Constants
+                        .TRACK_EVENT_TYPE_VIEW_VIDEO,vo.fileName);
     }
 
 
