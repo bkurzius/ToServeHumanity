@@ -17,6 +17,7 @@ import com.bahaiexplorer.toservehumanity.model.ConfigObjects;
 import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.model.Language;
 import com.bahaiexplorer.toservehumanity.model.VideoObject;
+import com.bahaiexplorer.toservehumanity.receivers.NotificationIntentReceiver;
 import com.bahaiexplorer.toservehumanity.util.ConnectionUtils;
 import com.bahaiexplorer.toservehumanity.util.JsonUtils;
 import com.google.analytics.tracking.android.EasyTracker;
@@ -25,6 +26,9 @@ import com.google.analytics.tracking.android.GAServiceManager;
 import com.google.analytics.tracking.android.GoogleAnalytics;
 import com.google.analytics.tracking.android.MapBuilder;
 import com.google.analytics.tracking.android.Tracker;
+import com.urbanairship.AirshipConfigOptions;
+import com.urbanairship.UAirship;
+import com.urbanairship.push.PushManager;
 
 import org.json.JSONObject;
 
@@ -80,6 +84,9 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
         }
 
         initializeGa();
+        initializeUrbanAirship();
+
+
 
     }
 
@@ -97,6 +104,23 @@ public class ToServeHumanityApplication extends Application implements JsonUtils
         mGa.getLogger().setLogLevel(Constants.GA_LOG_VERBOSITY);
 
     }
+
+
+    private void initializeUrbanAirship(){
+        AirshipConfigOptions options = AirshipConfigOptions.loadDefaultOptions(this);
+        options.developmentAppKey = "G5_cPji1TtigqVaHLk5mbA";
+        options.developmentAppSecret = "RpJuKsgDR7aO6oUPOM6V-g";
+        options.productionAppKey = "ZKqCb3zKQEe_LCTJPdK9hA";
+        options.productionAppSecret = "ZsxJ2xI0Qt2poyA8_wjMsw";
+        options.gcmSender = "756302441908";
+        options.transport="gcm";
+        options.inProduction = true; //determines which app key to use
+        //Take off initializes the services
+        UAirship.takeOff(this, options);
+        PushManager.enablePush();
+        PushManager.shared().setIntentReceiver(NotificationIntentReceiver.class);
+    }
+
     private void getJSONfromURL(){
         jsonUtils.getJSONfromURL(Constants.CONFIG_URL, this);
     }

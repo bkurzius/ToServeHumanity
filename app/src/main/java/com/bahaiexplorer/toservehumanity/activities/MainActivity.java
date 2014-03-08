@@ -22,9 +22,10 @@ import android.widget.TextView;
 import com.bahaiexplorer.toservehumanity.R;
 import com.bahaiexplorer.toservehumanity.ToServeHumanityApplication;
 import com.bahaiexplorer.toservehumanity.fragments.LanguageDialogFragment;
+import com.bahaiexplorer.toservehumanity.model.Constants;
 import com.bahaiexplorer.toservehumanity.model.VideoItem;
 import com.bahaiexplorer.toservehumanity.model.VideoObject;
-import com.bahaiexplorer.toservehumanity.model.Constants;
+import com.crashlytics.android.Crashlytics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +57,7 @@ public class MainActivity extends BaseActivity implements ToServeHumanityApplica
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Crashlytics.start(this);
         mApp = (ToServeHumanityApplication)getApplication();
         setListeners();
         mContext = this;
@@ -178,7 +180,7 @@ public class MainActivity extends BaseActivity implements ToServeHumanityApplica
             v.setId(position);
 
             mTitle.setText(vi.title);
-            mLength.setText(vi.length);
+            mLength.setText("Length: " + vi.length);
 
             // check to see if the file is saved and hide the icon if not
             ImageView savedIcon = (ImageView) v.findViewById(R.id.iv_saved);

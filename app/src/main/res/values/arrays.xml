@@ -44,17 +44,17 @@
     </string-array>
 
     <string-array name="video_icon_array">
-        <item>@drawable/thumb1</item>
-        <item>@drawable/thumb2</item>
-        <item>@drawable/thumb3</item>
-        <item>@drawable/thumb4</item>
-        <item>@drawable/thumb5</item>
-        <item>@drawable/thumb6</item>
-        <item>@drawable/thumb7</item>
-        <item>@drawable/thumb8</item>
-        <item>@drawable/thumb9</item>
-        <item>@drawable/thumb10</item>
-        <item>@drawable/thumb11</item>
+        <item>@drawable/thumb_introduction</item>
+        <item>@drawable/thumb_contributing</item>
+        <item>@drawable/thumb_twofold</item>
+        <item>@drawable/thumb_early</item>
+        <item>@drawable/thumb_selfless</item>
+        <item>@drawable/thumb_friendship</item>
+        <item>@drawable/thumb_coherence</item>
+        <item>@drawable/thumb_youth</item>
+        <item>@drawable/thumb_qualities</item>
+        <item>@drawable/thumb_building</item>
+        <item>@drawable/thumb_responding</item>
     </string-array>
 
 

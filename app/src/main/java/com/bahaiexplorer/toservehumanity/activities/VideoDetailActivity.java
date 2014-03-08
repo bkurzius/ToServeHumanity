@@ -155,12 +155,12 @@ public class VideoDetailActivity extends BaseActivity {
 
             iv.setImageDrawable(vo.iconDrawable);
             tvTitle.setText(vo.title);
-            tvLength.setText(vo.length);
+            tvLength.setText("Length: " + vo.length);
             tvSize.setText(vo.downloadSize);
 
             Button btnFacebook = (Button) rootView.findViewById(R.id.btn_facebutton);
-            String facebookLink = mApp.currLanguageConfig.strings.titleFacebookLink;
-            if(facebookLink.isEmpty()){
+            final String facebookURL = mApp.currLanguageConfig.facebookPage;
+            if(facebookURL.isEmpty()){
                 btnFacebook.setVisibility(View.GONE);
             }else{
                 btnFacebook.setText(mApp.currLanguageConfig.strings.titleFacebookLink);
@@ -171,8 +171,7 @@ public class VideoDetailActivity extends BaseActivity {
                         ((ToServeHumanityApplication)getActivity().getApplication()).trackEvent
                                 (Constants
                                         .TRACK_EVENT_TYPE_GOTO_FACEBOOK,"");
-                        String facebookURL = ((VideoDetailActivity)getActivity()).mApp
-                                .currLanguageConfig.facebookPage;
+
                         Intent intent = new Intent(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse(facebookURL));
                         startActivity(intent);
@@ -506,13 +505,15 @@ public class VideoDetailActivity extends BaseActivity {
     }
 
     private void createShare(){
+        String shareSubject = String.format(mApp.currLanguageConfig.strings.titleShareSubject,
+                vo.title);
         String shareString = String.format(mApp.currLanguageConfig.strings.textShareBody,
                 mApp.currLanguageConfig.projectName + ":" + vo.title, vo.shareURL,
                 mApp.currLanguageConfig.appLink );
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(Intent.EXTRA_SUBJECT,
-                mApp.currLanguageConfig.strings.titleShareSubject);
+                shareSubject);
         sharingIntent.putExtra(Intent.EXTRA_TEXT, shareString);
         mContext.startActivity(Intent.createChooser(sharingIntent,
                 mApp.getStrings().titleShare));
@@ -521,6 +522,5 @@ public class VideoDetailActivity extends BaseActivity {
     private void showNotConnectedMessage(){
         Toast.makeText(this, mApp.getStrings().textNoInternet, Toast.LENGTH_LONG).show();
     }
-
 
 }

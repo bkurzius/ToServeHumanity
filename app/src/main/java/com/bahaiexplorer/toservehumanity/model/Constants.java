@@ -47,7 +47,7 @@ public class Constants {
     public static final String PREFERENCE_KEY_CELLULAR_REMINDER = "dont_remind_cellular_connection";
 
 
-    public static final String CONFIG_URL = "http://bahaiexplorer.com/toservehumanity/config.json";
+    public static final String CONFIG_URL = "http://bahaiexplorer.com/toservehumanity/config-android.json";
     public static final String VIDEO_FOLDER = "ToServeHumanity";
     public static final String DOWNLOAD_PATH = "http://downloadcdn1.bahai.org/toserve/";
     public static final String LANGUAGE = "en";
